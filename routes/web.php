@@ -86,7 +86,15 @@ Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atual
 
 
     // Rotas para Gestor
-    Route::get('/dashboard/gestor', [GestorController::class, 'index'])->name('dashboard.gestor'); // Rota do índice do gestor
+
+    Route::get('/index_gestor', function () {
+    return view('index_arrumado');
+    });
+
+
+
+
+    Route::get('/dashboard/gestor', [GestorController::class, 'index'])->name('dashboard.gestor.index_arrumado'); // Rota do índice do gestor
     Route::get('/dashboard/gestor/pesquisa', [GestorController::class, 'index'])->name('dashboard.gestor.pedidos');
     Route::get('/dashboard/gestor/tickets', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.listar_tickets');
     Route::post('/dashboard/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('dashboard.gestor.aprovar_ticket');
