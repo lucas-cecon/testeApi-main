@@ -1,5 +1,31 @@
-<div class="container">
-    <h1>Meu Perfil</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENAI - Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex flex-col items-center bg-gray-100 relative"> 
+            @include('components.header', ['sectionTitle' => 'Perfil', 'pageTitle' => 'Perfil'])
+    </div>
+
+    <div>
+        <div class="bg-gray-100 flex items-center justify-center flex-col min-h-screen">
+
+        <div class="bg-white p  -8 rounded-lg shadow-lg max-w-md w-full mb-5">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Informações do perfil</h2>
+            <input type="text" placeholder="Nome" class="border-2 border-red-300 rounded-md p-2 w-full mb-4"/>
+            <input type="email" placeholder="E-mail" class="border-2 border-red-300 rounded-md p-2 w-full mb-4"/>
+            <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Salvar</button>
+        </div>
+    
+        </div>
+    </div>
 
     <!-- Exibir mensagens de sucesso ou erro -->
     @if (session('success'))
