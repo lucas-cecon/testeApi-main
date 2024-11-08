@@ -42,7 +42,7 @@
         <div class="w-11/12 h-0.5 bg-red-500 mb-4"></div> <!-- Red line -->
 
         <!-- Title -->
-        <h1 class="text-3x2 font-black mt-10 mb-20">Bem-vindo, Fulano</h1>
+        <h1 class="text-3x2 font-black mt-10 mb-20">Seja bem-vindo, {{ session('nome') }}!<br></h1>
 
         <!-- Responsive Grid for Icons -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20"> <!-- Grid for responsivity -->

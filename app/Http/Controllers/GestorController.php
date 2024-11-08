@@ -30,7 +30,7 @@ class GestorController extends Controller
         })->get();
 
         // Retornar a view com os tickets filtrados
-        return view('dashboard.gestor.index', compact('tickets'));
+        return view('dashboard.gestor.index_arrumado', compact('tickets'));
     }
 
     // Função que lista todos os tickets vinculados ao gestor logado

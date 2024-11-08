@@ -67,7 +67,7 @@ class FuncionarioController extends Controller
                 case 'RH':
                     return redirect()->route('dashboard.rh')->with('success', 'Login realizado com sucesso.');
                 case 'Gestor':
-                    return redirect()->route('dashboard.gestor')->with('success', 'Login realizado com sucesso.');
+                    return redirect()->route('dashboard.gestor.index_arrumado')->with('success', 'Login realizado com sucesso.');
                 case 'Professor':
                     return redirect()->route('dashboard.professor')->with('success', 'Login realizado com sucesso.');
                 default:
