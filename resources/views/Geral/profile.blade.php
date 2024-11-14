@@ -56,7 +56,7 @@
     <!-- Informações do perfil -->
     <h3>Informações do Usuário</h3>
     <p><strong>Nome:</strong> {{ $funcionario->nome }}</p>
-    <p><strong>Cargo:</strong> {{ session('cargo') }}</p>
+    <p class="mb-4"><strong>Cargo:</strong> {{ session('cargo') }}</p>
 
     <!-- Botão de logout -->
     <form method="POST" action="{{ route('funcionarios.logout') }}">

@@ -1,14 +1,29 @@
-{{-- resources/views/dashboard/gestor/detalhes_ticket.blade.php --}}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Ticket</title>
+    <title>SENAI - Ticket horário</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 </head>
-<body>
-    <div class="container mt-5">
-        <h1>Detalhes do Ticket</h1>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    .font-inter {
+        font-family: 'Inter', sans-serif;
+    }
+</style>
+<body class="font-inter bg-gray-100 min-h-screen">
+<div class="flex flex-col items-center min-h-screen bg-gray-100"> 
+        <div class="container mx-auto pt-2 flex justify-between items-center w-11/12">
+            <!-- Logo SENAI e Secretaria -->
+            <div class="flex items-center">
+                <!-- Logo SENAI -->
+                <a href="{{url('')}}"><img src="{{ asset('assets/img/senai.svg') }}" alt="SENAI Logo" class="senai-logo"></a>
+                <!-- Texto "Secretaria" -->
+                <span class="secretaria-text">Secretaria</span>
+            </div>
+        </div>
 
         @if(session('success'))
             <div class="alert alert-success">
