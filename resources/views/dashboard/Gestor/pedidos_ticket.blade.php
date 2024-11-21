@@ -58,7 +58,7 @@
                                     @elseif($ticket->statusTicket->status == 'Recusado') text-red-500 
                                     @endif">{{ $ticket->statusTicket->status }}</td>
                                 <td>
-                                <a href="" class="btn btn-info">Visualizar</a>
+                                <a href="{{ route('dashboard.gestor.detalhar_ticket', $ticket->id) }}" class="btn btn-info px-4 py-2">Ver detalhes</a>
                                 </td>
                             </tr>
                             @endforeach
