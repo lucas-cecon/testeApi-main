@@ -99,7 +99,8 @@ Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atual
     Route::get('/dashboard/gestor/tickets', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.listar_tickets');
     Route::post('/dashboard/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('dashboard.gestor.aprovar_ticket');
     Route::post('/dashboard/gestor/tickets/rejeitar/{id}', [GestorController::class, 'rejeitarTicket'])->name('dashboard.gestor.rejeitar_ticket');
-    Route::get('/dashboard/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('dashboard.gestor.detalhar_ticket'); // Rota para detalhes do ticket
+    Route::get('/dashboard/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('dashboard.gestor.detalhar_ticket');    // Rota para detalhes do ticket
+    Route::get('/dashboard/gestor/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.pedidos_ticket'); 
     // Rota para a lista de alunos no dashboard do gestor
     Route::get('/dashboard/gestor/alunos', [GestorController::class, 'mostrarAlunos'])->name('dashboard.gestor.alunos');
     Route::get('/dashboard/gestor/alunos/pesquisa', [GestorController::class, 'pesquisaAluno'])->name('dashboard.gestor.alunos.pesquisa');
@@ -143,6 +144,8 @@ Route::prefix('api')->group(function () {
     // Rota para adicionar funcionário via API
     Route::post('/funcionarios/adicionar', [FuncionarioController::class, 'adicionarFuncionario'])->name('api.funcionarios.adicionar');
 
+    
+
     // Rota para atualizar funcionário via API
     Route::put('/funcionarios/atualizar/{id}', [FuncionarioController::class, 'atualizarFuncionario'])->name('api.funcionarios.atualizar');
 
@@ -172,4 +175,5 @@ Route::prefix('api')->group(function () {
     Route::post('/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('api.gestor.aprovar_ticket');
     Route::post('/gestor/tickets/rejeitar/{id}', [GestorController::class, 'rejeitarTicket'])->name('api.gestor.rejeitar_ticket');
     Route::get('/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('api.gestor.detalhar_ticket');
+    
 });

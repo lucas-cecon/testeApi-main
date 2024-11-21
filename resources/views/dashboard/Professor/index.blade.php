@@ -38,7 +38,7 @@
                 </a>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
                 
-                <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Ponto<br>Virtual</p>
+                <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Pedido de<br>troca  de horário</p>
                 
             </div>
 

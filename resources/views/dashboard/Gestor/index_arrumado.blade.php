@@ -24,16 +24,7 @@
 <body class="font-inter"> <!-- Apply Inter to the entire body -->
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
-        <div class="container mx-auto flex justify-between items-center w-11/12">
-            <!-- Logo SENAI e Secretaria -->
-            <div class="flex items-center">
-                <!-- Logo SENAI -->
-                <img src="{{ asset('assets/img/senai.svg') }}" alt="SENAI Logo" class="senai-logo">
-                <!-- Texto "Secretaria" -->
-                <span class="secretaria-text">Secretaria</span>
-            </div>
-        </div>
-        <div class="w-11/12 h-0.5 bg-red-500 mb-2"></div>
+        
 
         <div class="w-11/12 items-center mb-2"> <!-- Adjusted for positioning -->
             <h2 class="text-3x2 text-red-500 font-black uppercase">Dashboard</h2>
@@ -65,14 +56,37 @@
             </div>
 
             <!-- Icon 3 -->
-            <div class="flex flex-col items-center">
+            <a href="{{ route('dashboard.gestor.pedidos_ticket')}}"><div class="flex flex-col items-center">
                 <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div>
                 <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Ponto<br>Virtual</p>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
-            </div>
+            </div></a>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </div>
 </body>
 </html>

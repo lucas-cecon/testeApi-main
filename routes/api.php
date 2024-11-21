@@ -41,3 +41,4 @@ use Illuminate\Support\Facades\Route;
     Route::post('/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('api.gestor.aprovar_ticket');
     Route::post('/gestor/tickets/rejeitar/{id}', [GestorController::class, 'rejeitarTicket'])->name('api.gestor.rejeitar_ticket');
     Route::get('/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('api.gestor.detalhar_ticket');
+Route::get('/gestor/tickets/pedidos', [GestorController::class, 'pedidosTicket'])->name('api.gestor.pedidos_ticket');
