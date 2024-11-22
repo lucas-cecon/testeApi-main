@@ -10,30 +10,40 @@ let options = new chrome.Options();
         .build();
 
     try {
-        // Passo 1: Navegar até a página de login
-        const loginUrl = "http://127.0.0.1:8000/login"; // Substitua pela URL do login
+        console.log("Iniciando o teste...");
+        const loginUrl = "http://127.0.0.1:8000/login";
         await driver.get(loginUrl);
+        console.log("Página de login carregada.");
 
-        // Passo 2: Preencher os campos de login
         const cpf_nif = await driver.findElement(By.name("cpf_nif"));
-        await cpf_nif.sendKeys("09876543210");
+        await cpf_nif.sendKeys("10928102910");
 
         const senha = await driver.findElement(By.name("senha"));
         await senha.sendKeys("12345");
 
-        // Passo 3: Submeter o formulário
         const loginButton = await driver.findElement(
             By.css("button[type='submit']")
         );
         await loginButton.click();
+        console.log("Botão de login clicado.");
 
-        // Passo 4: Aguarde até que a página pós-login carregue
-        await driver.wait(until.urlIs("http://127.0.0.1:8000/dashboard"));
-        
+        // Espera a URL mudar
+        try {
+            await driver.wait(
+                until.urlIs("http://127.0.0.1:8000/dashboard/professor"),
+                20000
+            );
+            console.log("Concluído com êxito: Redirecionado para o dashboard.");
+        } catch (urlError) {
+            console.error(
+                "Erro: URL esperada não carregada. Verifique o redirecionamento."
+            );
+            console.log("URL atual:", await driver.getCurrentUrl());
+        }
     } catch (err) {
-        console.error("Erro ao executar o teste:", err);
+        console.error("Erro ao executar o teste:", err.message || err);
     } finally {
-        // Finalizar o navegador
         await driver.quit();
+        console.log("Navegador fechado.");
     }
 })();
