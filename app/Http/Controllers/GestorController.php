@@ -44,8 +44,10 @@ class GestorController extends Controller
             ->with(['horarioAntigo', 'horarioNovo', 'statusTicket', 'funcionario'])
             ->get();
 
-        return response()->json($tickets); // Retorna os tickets como JSON
+        // Retorna os tickets para a view
+        return view('dashboard.gestor.pedidos_ticket', ['tickets' => $tickets]);
     }
+
 
     // Função que aprova um ticket
     public function aprovarTicket($id)
