@@ -9,7 +9,7 @@ use App\Http\Controllers\DiplomaController;
 use Illuminate\Support\Facades\Route;
 
 // Rota para exibir o formulário de login (sem middleware)
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 })->name('login');
 
