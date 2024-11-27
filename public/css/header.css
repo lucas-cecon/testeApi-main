@@ -1,0 +1,65 @@
+/* Estilos personalizados */
+.custom-header {
+    background-color: white;
+}
+
+/* Barra superior vermelha */
+.top-red-bar {
+    height: 3px;
+    background-color: #E30613; /* Cor vermelha da marca SENAI */
+}
+
+/* Barra inferior vermelha */
+.bottom-red-bar {
+    height: 2px;
+    background-color: #E30613; /* Cor vermelha da marca SENAI */
+}
+
+/* Estilos do logotipo e da seção "Secretaria" */
+.senai-logo {
+    height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.secretaria-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #E30613;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Estilo da seção "DIPLOMA" */
+.diploma-text {
+    color: #E30613;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Botão "Novo pedido" */
+.new-order-btn {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.new-order-btn svg {
+    margin-right: 6px;
+}
+
+.new-order-btn:hover {
+    background-color: #218838;
+}
+
+/* Barra de busca */
+.search-bar {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
