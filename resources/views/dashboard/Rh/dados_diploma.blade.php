@@ -99,7 +99,7 @@ Desconhecido
     <form method="POST" action="{{ route('diplomas.associar', $diploma->id) }}">
         @csrf
         <div>
-            <select id="aluno_id" name="aluno_id" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
+            <select id="aluno_id" name="aluno_id" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full mb-2" required>
                 <option value="">Selecione um aluno</option>
                 @foreach ($todosAlunos as $aluno)
                     <option value="{{ $aluno->id_aluno }}">{{ $aluno->nome }}</option>
@@ -107,7 +107,7 @@ Desconhecido
             </select>
         </div>
         <div>
-            <button type="submit">Adicionar Aluno</button>
+            <button type="submit" class=" btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Adicionar Aluno</button>
         </div>
     </form>
 
@@ -142,7 +142,7 @@ Desconhecido
                                         <td class="border border-gray-300 px-4 py-2">{{ $relacao->aluno->cpf_aluno }}</td>
                                         <td class="border border-gray-300 px-4 py-2">{{ $relacao->aluno->rg }}</td>
                                         @if($diploma->status < 3) <!-- Apenas exibe o botão de Remover se o status for menor que 3 -->
-                                            <td>
+                                            <td class="border border-gray-300 px-4 py-2">
                                                 <form method="POST" action="{{ route('diplomas.remover', $relacao->id) }}" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
@@ -160,46 +160,18 @@ Desconhecido
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center bg-gray-100">
-        <!-- Form Container -->
-        <div class="bg-gray-200 p-8 rounded-md shadow-md w-full max-w-2xl"> <!-- Tornado responsivo com w-full -->
-            <h2 class="text-lg font-bold mb-4">Nova senha</h2>
-            
-            <!-- Form Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4"> <!-- Responsivo: 1 coluna em telas pequenas, 2 colunas em telas maiores -->
-                <!-- Id do Pedido -->
-                <!-- Funcionário -->
-                <div class="flex flex-col">
-                    <label for="funcionario" class="font-bold mb-2">Senha atual:</label>
-                    <input type="text" id="funcionario" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full">
-                </div>
 
-                <!-- Horário Antigo -->
-                <div class="flex flex-col">
-                    <label for="horario-antigo" class="font-bold mb-2">Senha nova:</label>
-                    <input type="text" id="horario-antigo" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full">
-                </div>
+        <a href="{{ route('dashboard.rh.diplomas') }}">Voltar para a lista de diplomas</a>
 
-                <!-- Horário Novo -->
-                <div class="flex flex-col">
-                    <label for="horario-novo" class="font-bold mb-2">Confirmar senha:</label>
-                    <input type="text" id="horario-novo" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full">
-                </div>
-
-                <!-- Confirmar -->
-                <div class="flex flex-col md:col"> <!-- Ocupa 2 colunas em telas maiores -->
-                    <label for="horario-novo" class="font-bold mb-2">‎ </label>
-                    <button class="w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Confirmar</button> <!-- Botão responsivo com w-full -->
-                </div>
-            </div>
-        </div>
     </div>
+
+
 
 </body>
 </html>
 
 
-
+{{-- 
 
 <h1>Detalhes do Diploma</h1>
 
@@ -297,4 +269,4 @@ Desconhecido
 function confirmUpdate() {
     return confirm('Tem certeza que deseja mudar o status deste diploma?');
 }
-</script>
+</script> --}}
