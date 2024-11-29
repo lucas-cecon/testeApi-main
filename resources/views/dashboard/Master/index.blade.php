@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     
-    <title>Center Icons</title>
+    <title>SENAI - Master</title>
     
     <!-- Custom Tailwind Setup for Inter Font -->
     <style>
@@ -46,7 +46,7 @@
                 <a href="{{ route('dashboard.master.alunos') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_2.svg') }}" alt="Icon 2" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
-                <a href="{{url('aapm')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Portal da<br>AAPM</p></a>
+                <a href="{{url('aapm')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Lista<br>alunos</p></a>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
             </div>
 

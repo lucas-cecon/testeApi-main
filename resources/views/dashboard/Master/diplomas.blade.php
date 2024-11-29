@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <form method="GET" action="{{ route('diplomas.pesquisa') }}" id="filterForm">
     <input type="text" name="search" placeholder="Buscar por Título do Diploma, Nome do Aluno, CPF ou RG" value="{{ request('search') }}">
     <button type="submit">Filtrar</button>
