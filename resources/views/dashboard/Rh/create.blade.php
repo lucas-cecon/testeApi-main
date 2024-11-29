@@ -80,7 +80,7 @@
                     </div>
                     <div class="flex flex-col md:col"> <!-- Ocupa 2 colunas em telas maiores -->
                         <label class="font-bold mb-2">‎ </label>
-                        <a href="{{ route('dashboard.rh') }}/"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
+                        <a href="{{ route('dashboard.rh.diplomas') }}/"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
                     </div>
                 </div>
             </form>

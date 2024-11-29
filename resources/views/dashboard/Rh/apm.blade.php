@@ -24,7 +24,7 @@
                 </svg>
                 Adicionar Alunos
             </button></a>
-            <a href="{{url('aapm')}}"><button class="new-order-btn" stroke="currentColor">
+            <a href="{{route('dashboard.rh')}}"><button class="new-order-btn" stroke="currentColor">
                 Voltar
             </button></a>
         </div>

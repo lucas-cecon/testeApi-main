@@ -149,7 +149,11 @@ Desconhecido
         </div>
     </div>
 
-        <a href="{{ route('dashboard.rh.diplomas') }}">Voltar para a lista de diplomas</a>
+<a href="{{ route('dashboard.rh.diplomas') }}" 
+   class="inline-block mb-5 ml-5 bg-gray-200 text-red-500 font-bold px-6 py-2 rounded-md shadow-md hover:bg-gray-300 hover:text-red-700">
+    Voltar para a lista de diplomas
+</a>
+
 
     </div>
 

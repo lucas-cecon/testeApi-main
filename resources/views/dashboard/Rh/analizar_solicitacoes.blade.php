@@ -112,6 +112,9 @@
                         <a href="{{ route('dashboard.rh.pedidos') }}" class="btn btn-secondary"><button  class=" btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
                     </div>
                 </div>
+            <br>
+            <br>
+            <br>
         </div>    
 
     {{-- <div class="container mt-5">

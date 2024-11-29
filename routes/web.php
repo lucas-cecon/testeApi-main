@@ -71,7 +71,7 @@ Route::delete('/dashboard/rh/diplomas/remover-aluno/{id}', [DiplomaController::c
 Route::get('/dashboard/rh/diplomas/escolher', [DiplomaController::class, 'escolher'])->name('diplomas.escolher'); // Escolher diploma
 Route::post('/dashboard/rh/diplomas/associar', [DiplomaController::class, 'associar'])->name('diplomas.associar'); // Associar diploma
 
-Route::get('/dashboard/rh/create', [DiplomaController::class, 'create'])->name('diplomas.create');
+Route::get('/dashboard/rh/create', [DiplomaController::class, 'create'])->name('diplomas.create.rh');
 Route::post('/dashboard/rh/diplomas', [DiplomaController::class, 'store'])->name('diplomas.store');
 Route::post('/dashboard/rh/diplomas/{diploma}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
 Route::delete('/dashboard/rh/diplomas/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diplomas.remover');
