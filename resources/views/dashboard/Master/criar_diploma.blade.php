@@ -47,20 +47,20 @@
                     <!-- Funcionário -->
                     <div class="form-group flex flex-col">
                         <label for="horario_novo" class="font-bold mb-2">Título do Diploma:</label>
-                        <input type="text" id="titulo" name="titulo"  class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
+                        <input type="text" name="titulo"  class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
                     </div>
 
                     <!-- Horário Antigo -->
                     <div class="form-group flex flex-col">
                         <label for="gestor_responsavel" class="font-bold mb-2">Lote do Diploma:</label>
-                        <input type="text" id="lote_diploma" name="lote_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
+                        <input type="text" name="lote_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
                     
                     </div>
 
                     <!-- Horário Novo -->
                     <div class="form-group flex flex-col">
                         <label for="descricao" class="font-bold mb-2">Quantidade de Diplomas:</label>
-                        <input type="number" id="quant_diploma" name="quant_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full">
+                        <input type="number" name="quant_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full">
                     </div>
 
                     <div class="form-group flex flex-col">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="flex flex-col md:col"> <!-- Ocupa 2 colunas em telas maiores -->
                         <label class="font-bold mb-2">‎ </label>
-                        <a href="{{ route('dashboard.rh.diplomas') }}/"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
+                        <a href="{{ route('dashboard.master') }}/"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
                     </div>
                 </div>
             </form>
@@ -101,7 +101,7 @@
 
 
 
-
+{{-- 
     <h1>Criar Novo Diploma</h1>
 
     @if (session('success'))
@@ -136,4 +136,4 @@
 
     <a href="{{ route('dashboard.master') }}">
         <button>Voltar</button>
-    </a>
+    </a> --}}

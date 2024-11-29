@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     
-    <title>Center Icons</title>
+    <title>SENAI - Master</title>
     
     <!-- Custom Tailwind Setup for Inter Font -->
     <style>

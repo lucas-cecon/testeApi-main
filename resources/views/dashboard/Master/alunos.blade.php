@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENAI - Diplomas</title>
+    <title>SENAI - Alunos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 </head>
@@ -35,7 +35,7 @@
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative">
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Diplomas',
+            'pageTitle' => 'Alunos',
             'logoUrl' => route('dashboard.master') // Defina a URL desejada
         ])
 
