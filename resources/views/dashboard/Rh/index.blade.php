@@ -25,7 +25,11 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
         
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Dashboard'])
+        @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
+        ])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-20">Bem-vindo, {{ session('nome') }}!</h1>
