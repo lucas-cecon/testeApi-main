@@ -33,7 +33,7 @@
     <div class="bg-gray-200 p-8 rounded-md shadow-md w-full max-w-2xl"> <!-- Tornado responsivo com w-full -->
          
 
-            <h2 class="text-lg font-bold mb-4">Pedido</h2>
+            <h2 class="text-lg font-bold mb-4">Editar aluno</h2>
                  <!-- Form Grid -->
                  <form action="{{ route('dashboard.master.alunos.atualizar', $aluno->id_aluno) }}" method="POST">
                         @csrf
