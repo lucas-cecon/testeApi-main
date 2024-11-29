@@ -28,39 +28,21 @@
         @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Dashboard'])
 
         <!-- Title -->
-        <h1 class="text-3x2 font-black mt-10 mb-20">Seja bem-vindo, {{ session('nome') }}!<br></h1>
-
-        <!-- Responsive Grid for Icons -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20"> <!-- Grid for responsivity -->
-            <!-- Icon 1 -->
-            <div class="flex flex-col items-center">
-                <a href="{{ route('dashboard.gestor.alunos') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
-                    <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 1" class="w-32 h-32 transition-opacity hover:opacity-80">
-                </div></a>
-                <a href="{{url('diplomas')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Diplomas</p></a>
-                <div class="w-16 h-1 bg-red-500 mt-5"></div>
-            </div>
-
-            <!-- Icon 2 -->
-            <div class="flex flex-col items-center">
-                <a href="{{url('aapm')}}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
-                    <img src="{{ asset('assets/img/icone_dashboard_2.svg') }}" alt="Icon 2" class="w-32 h-32 transition-opacity hover:opacity-80">
-                </div></a>
-                <a href="{{url('aapm')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Portal da<br>AAPM</p></a>
-                <div class="w-16 h-1 bg-red-500 mt-5"></div>
-            </div>
-
-            <!-- Icon 3 -->
-            <a href="{{ route('dashboard.gestor.pedidos_ticket')}}"><div class="flex flex-col items-center">
-                <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
-                    <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
+        <h1 class="text-3x2 font-black mt-10 mb-2">Seja bem-vindo, {{ session('nome') }}!<br></h1>
+<main class="flex-grow flex items-center justify-center"> <!-- Centralização -->
+        <div class="flex flex-col items-center">
+            <a href="{{ route('dashboard.gestor.pedidos_ticket')}}">
+                <div class="flex flex-col items-center">
+                    <!-- Ícone -->
+                    <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                        <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
+                    </div>
+                    <!-- Texto abaixo do ícone -->
+                    <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Ponto<br>Virtual</p>
+                    <div class="w-16 h-1 bg-red-500 mt-5"></div>
                 </div>
-                <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Ponto<br>Virtual</p>
-                <div class="w-16 h-1 bg-red-500 mt-5"></div>
-            </div></a>
+            </a>
         </div>
-      
-    </div>
+    </main>
 </body>
 </html>
-
