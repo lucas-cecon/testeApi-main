@@ -16,7 +16,11 @@
 <body class="font-inter bg-gray-100">
 
   <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
-  @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Ponto virtual'])
+          @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.gestor.index_arrumado')  // Defina a URL desejada
+        ])
      
 
      <form method="GET" action="{{ route('dashboard.gestor.pedidos_ticket') }}" id="searchForm" style="margin-bottom: 20px;">
