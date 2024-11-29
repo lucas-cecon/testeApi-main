@@ -52,6 +52,7 @@ Route::middleware([\App\Http\Middleware\VerificarToken::class])->group(function 
 
     // Rotas para RH
     Route::get('/dashboard/rh', [RHController::class, 'index'])->name('dashboard.rh');
+    Route::get('/dashboard/rh/pedidos', [RHController::class, 'pedidos'])->name('dashboard.rh.pedidos');
     Route::get('/dashboard/rh/pesquisar', [RHController::class, 'pesquisar'])->name('dashboard.rh.pesquisar');
     Route::post('/dashboard/rh/aprovar/{id}', [RHController::class, 'aprovarTicket'])->name('dashboard.rh.aprovar_ticket'); // Método POST para aprovar
     Route::post('/dashboard/rh/rejeitar/{id}', [RHController::class, 'rejeitarTicket'])->name('dashboard.rh.rejeitar_ticket'); // Método POST para rejeitar

@@ -17,24 +17,10 @@
 
     
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
-        <div class="container mx-auto pt-2 flex justify-between items-center w-11/12">
-            <!-- Logo SENAI e Secretaria -->
-            <div class="flex items-center">
-                <!-- Logo SENAI -->
-                <a href="{{url('')}}"><img src="{{ asset('assets/img/senai.svg') }}" alt="SENAI Logo" class="senai-logo"></a>
-                <!-- Texto "Secretaria" -->
-                <span class="secretaria-text">Secretaria</span>
-            </div>
-        </div>
-    
-        <div class="w-11/12 h-0.5 bg-red-500 mb-2"></div>
+        
+        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Ponto virtual'])
 
         
-        <div class="w-11/12 items-center mb-2"> <!-- Adjusted for positioning -->
-            <h2 class="text-3x2 text-red-500 font-black uppercase">Ponto virtual</h2>
-        </div>
-        
-        <div class="w-11/12 h-0.5 bg-red-500 mb-4"></div> <!-- Red line -->
 
         <h2 class="text-3x2 font-black uppercase mb-4">Informações sobre meu pedido:</h2>
 
@@ -64,7 +50,7 @@
                     <!-- Horário Novo -->
                     <div class="form-group flex flex-col">
                         <label for="descricao" class="font-bold mb-2">Descrição:</label>
-                        <input name="descricao" type="text" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $ticket->descricao }}">
+                        <input name="descricao" type="text" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $ticket->descricao }}" readonly>
                     </input>
                     </div>
 

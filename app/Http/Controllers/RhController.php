@@ -14,12 +14,21 @@ class RHController extends Controller
         // Obtém o ID do funcionário logado (usando session ou Auth)
         $funcionarioId = session('id_funcionario'); // ou Auth::user()->ID_funcionario, se estiver usando Auth
 
+        return view('dashboard.rh.index');
+    }
+
+        public function pedidos()
+    {
+        // Obtém o ID do funcionário logado (usando session ou Auth)
+        $funcionarioId = session('id_funcionario'); // ou Auth::user()->ID_funcionario, se estiver usando Auth
+
         $tickets = ControleDePontoTicket::whereIn('status_ticket', [2, 3, 4]) // Filtrando os tickets com os status 2, 3 e 4
         ->with(['funcionario', 'horarioAntigo', 'horarioNovo'])
         ->get();
 
-        return view('dashboard.rh.index', compact('tickets'));
+        return view('dashboard.rh.pedidos', compact('tickets'));
     }
+
 
     public function pesquisar(Request $request)
     {
@@ -46,7 +55,7 @@ class RHController extends Controller
         $ticket->status_ticket = 3; // Supondo que 3 é o status de "Aprovado"
         $ticket->save();
 
-        return redirect()->route('dashboard.rh')->with('success', 'Pedido aprovado com sucesso!');
+        return redirect()->route('dashboard.rh.pedidos')->with('success', 'Pedido aprovado com sucesso!');
     }
 
     // Método para rejeitar um pedido
@@ -56,7 +65,7 @@ class RHController extends Controller
         $ticket->status_ticket = 4; // Supondo que 4 é o status de "Rejeitado"
         $ticket->save();
 
-        return redirect()->route('dashboard.rh')->with('success', 'Pedido rejeitado com sucesso!');
+        return redirect()->route('dashboard.rh.pedidos')->with('success', 'Pedido rejeitado com sucesso!');
     }
 
     // Método para exibir detalhes de um ticket
