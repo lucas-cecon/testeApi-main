@@ -11,7 +11,11 @@
     
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Diplomas'])
+        @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Diplomas',
+            'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
+        ])
     
         <div class="container mx-auto py-6 w-11/12">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">

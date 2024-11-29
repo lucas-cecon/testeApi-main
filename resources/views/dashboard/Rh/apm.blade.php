@@ -11,7 +11,11 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
         
-    @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'AAPM'])
+    @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'AAPM',
+            'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
+        ])
 
         <div class="flex space-x-2">
             <a href=""><button class="new-order-btn">

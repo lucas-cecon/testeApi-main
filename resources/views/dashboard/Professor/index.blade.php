@@ -19,7 +19,11 @@
    
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
        
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Ponto Virtual'])
+        @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Ponto Virtual',
+            'logoUrl' => route('dashboard.professor')  // Defina a URL desejada
+        ])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-10">Seja bem-vindo, {{ session('nome') }}!<br></h1>
