@@ -35,7 +35,7 @@ class DiplomaController extends Controller
 
         return view('dashboard.rh.diplomas', compact('diplomas'));
     }
-
+    
     /**
      * Exibe os detalhes de um diploma específico.
      */
