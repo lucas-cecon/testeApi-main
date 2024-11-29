@@ -19,11 +19,7 @@
    
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
        
-        <div class="w-11/12 items-center mb-2"> <!-- Adjusted for positioning -->
-            <h2 class="text-3x2 text-red-500 font-black uppercase">Dashboard</h2>
-        </div>
-        
-        <div class="w-11/12 h-0.5 bg-red-500 mb-4"></div> <!-- Red line -->
+        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'AApm'])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-10">Seja bem-vindo, {{ session('nome') }}!<br></h1>
@@ -166,5 +162,5 @@
     <a href="{{ route('perfil') }}">
         <button style="margin-bottom: 20px;">Ver Perfil</button>
     </a>
-    
-</div> --}}
+
+</div>  --}}

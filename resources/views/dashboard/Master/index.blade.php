@@ -34,7 +34,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20"> <!-- Grid for responsivity -->
             <!-- Icon 1 -->
             <div class="flex flex-col items-center">
-                <a href="{{ route('dashboard.gestor.alunos') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                <a href="{{ route('dashboard.master.diplomas') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 1" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
                 <a href="{{url('diplomas')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Diplomas</p></a>
@@ -43,7 +43,7 @@
 
             <!-- Icon 2 -->
             <div class="flex flex-col items-center">
-                <a href="{{url('aapm')}}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                <a href="{{ route('dashboard.master.alunos') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_2.svg') }}" alt="Icon 2" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
                 <a href="{{url('aapm')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Portal da<br>AAPM</p></a>
@@ -51,7 +51,7 @@
             </div>
 
             <!-- Icon 3 -->
-            <a href="{{ route('dashboard.gestor.pedidos_ticket')}}"><div class="flex flex-col items-center">
+            <a href="{{ route('dashboard.master.pedidos_ticket')}}"><div class="flex flex-col items-center">
                 <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div>
@@ -63,4 +63,3 @@
     </div>
 </body>
 </html>
-

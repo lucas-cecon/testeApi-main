@@ -63,7 +63,7 @@ class FuncionarioController extends Controller
             // Redireciona com base no cargo do funcionário
             switch ($cargo->descricao) {
                 case 'Master':
-                    return redirect()->route('funcionarios.listar')->with('success', 'Login realizado com sucesso.');
+                    return redirect()->route('dashboard.master')->with('success', 'Login realizado com sucesso.');
                 case 'RH':
                     return redirect()->route('dashboard.rh')->with('success', 'Login realizado com sucesso.');
                 case 'Gestor':
