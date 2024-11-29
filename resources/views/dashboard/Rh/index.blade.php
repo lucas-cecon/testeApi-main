@@ -10,8 +10,8 @@
     <!-- Load Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-    
-    <title>Center Icons</title>
+    <title>SENAI - RH Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
     
     <!-- Custom Tailwind Setup for Inter Font -->
     <style>

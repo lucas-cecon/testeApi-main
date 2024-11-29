@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENAI - AAPM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('../css/header.css') }}">
-     <style>
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
+    <title>SENAI - Ponto Virtual</title>
+    <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       .font-inter {
           font-family: 'Inter', sans-serif;
@@ -23,9 +25,9 @@
         ])
      
 
-     <form method="GET" action="{{ route('dashboard.gestor.pedidos_ticket') }}" id="searchForm" style="margin-bottom: 20px;">
+     <form method="GET" action="{{ route('dashboard.gestor.pedidos_ticket') }}" id="searchForm" class="mb-2">
         <input type="text" class="block w-1/1 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="searchInput" name="search" placeholder="Buscar por funcionário" value="{{ request()->input('search') }}">
-        <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+        <button type="submit" class="text-white ml-2 mr-10 mt-2 end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
         <button type="button" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="document.getElementById('searchInput').value = ''; document.getElementById('searchForm').submit();">Limpar</button>
     </form>
 

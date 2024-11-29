@@ -190,17 +190,17 @@ Route::prefix('api')->group(function () {
     Route::get('/dashboard/master/alunos/{id}', [MasterController::class, 'showAluno'])->name('dashboard.master.alunos.detalhes');;
     Route::get('/dashboard/master/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.master.pedidos_ticket'); 
 
-    Route::get('/dashboard/master/diplomas', [DiplomaController::class, 'index'])->name('dashboard.master.diplomas'); // Exibe todos os diplomas
-    Route::get('/dashboard/master/diplomas/pesquisa', [DiplomaController::class, 'index'])->name('diplomas.pesquisa'); // Pesquisa de diplomas
-    Route::get('/dashboard/master/diplomas/{id}', [DiplomaController::class, 'show'])->name('dashboard.master.diplomas.show'); // Detalhe do diploma
-    Route::get('/diplomas/visualizar/{id}', [DiplomaController::class, 'visualizar'])->name('diplomas.visualizar'); // Visualizar diploma
-    Route::delete('/dashboard/master/diplomas/remover-aluno/{id}', [DiplomaController::class, 'removerAluno'])->name('dashboard.master.remover_aluno'); // Remover aluno
-    Route::get('/dashboard/master/diplomas/escolher', [DiplomaController::class, 'escolher'])->name('diplomas.escolher'); // Escolher diploma
-    Route::post('/dashboard/master/diplomas/associar', [DiplomaController::class, 'associar'])->name('diplomas.associar'); // Associar diploma
+    Route::get('/dashboard/master/diploma', [diplomaController::class, 'index'])->name('dashboard.master.diploma'); // Exibe todos o
+    Route::get('/dashboard/master/diploma/pesquisa', [diplomaController::class, 'index'])->name('diploma.pesquisa'); // Pesquisa de 
+    Route::get('/dashboard/master/diploma/{id}', [DiplomaController::class, 'show'])->name('dashboard.master.diploma.show'); // Detalhe do diploma
+    Route::get('/diploma/visualizar/{id}', [DiplomaController::class, 'visualizar'])->name('diploma.visualizar'); // Visualizar diploma
+    Route::delete('/dashboard/master/diploma/remover-aluno/{id}', [DiplomaController::class, 'removerAluno'])->name('dashboard.master.remover_aluno'); // Remover aluno
+    Route::get('/dashboard/master/diploma/escolher', [DiplomaController::class, 'escolher'])->name('diploma.escolher'); // Escolher diploma
+    Route::post('/dashboard/master/diploma/associar', [DiplomaController::class, 'associar'])->name('diploma.associar'); // Associar diploma
     
-    Route::get('/dashboard/master/create', [DiplomaController::class, 'create'])->name('diplomas.create');
-    Route::post('/dashboard/master/diplomas', [DiplomaController::class, 'store'])->name('diplomas.store');
-    Route::post('/dashboard/master/diplomas/{diploma}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
-    Route::delete('/dashboard/master/diplomas/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diplomas.remover');
-    Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atualizarStatus'])->name('diplomas.atualizarStatus');
+    Route::get('/dashboard/master/create', [DiplomaController::class, 'create'])->name('diploma.create');
+    Route::post('/dashboard/master/diploma', [DiplomaController::class, 'store'])->name('diploma.store');
+    Route::post('/dashboard/master/diploma/{diploma}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diploma.associar');
+    Route::delete('/dashboard/master/diploma/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diploma.remover');
+    Route::post('/diploma/{id}/atualizar-status', [DiplomaController::class, 'atualizarStatus'])->name('diploma.atualizarStatus');
 });

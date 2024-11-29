@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENAI - Diplomas</title>
+    <title>SENAI - Diploma</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
@@ -12,13 +12,13 @@
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative">
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Diplomas',
-            'logoUrl' => route('dashboard.rh') // Defina a URL desejada
+            'pageTitle' => 'Diploma',
+            'logoUrl' => route('dashboard.master') // Defina a URL desejada
         ])
 
         <!-- Botões de Ação -->
         <div class="flex space-x-4 mt-4">
-            <a href="{{ route('diplomas.create.rh') }}">
+            <a href="{{ route('diploma.create.rh') }}">
                 <button class="new-order-btn flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -27,7 +27,7 @@
                 </button>
             </a>
 
-            <a href="{{ route('dashboard.rh') }}">
+            <a href="{{ route('dashboard.master') }}">
                 <button class="new-order-btn text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2">
                     Voltar
                 </button>
@@ -41,7 +41,7 @@
                     @if (!empty($error))
                         <div class="bg-red-500 text-white p-4 mb-4">{{ $error }}</div>
                     @else
-                        <form method="GET" action="{{ route('diplomas.pesquisa') }}" id="filterForm" class="flex flex-col md:flex-row items-center justify-center mb-6">
+                        <form method="GET" action="{{ route('diploma.pesquisa') }}" id="filterForm" class="flex flex-col md:flex-row items-center justify-center mb-6">
                             <input 
                                 type="text" 
                                 name="search" 
@@ -58,13 +58,13 @@
                                 <button 
                                     type="button" 
                                     class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2"
-                                    onclick="document.getElementById('filterForm').reset(); window.location.href='{{ route('diplomas.pesquisa') }}';">
+                                    onclick="document.getElementById('filterForm').reset(); window.location.href='{{ route('diploma.pesquisa') }}';">
                                     Limpar
                                 </button>
                             </div>
                         </form>
 
-                        <h1 class="text-center text-xl font-semibold mb-4">Lista de Diplomas</h1>
+                        <h1 class="text-center text-xl font-semibold mb-4">Lista de Diploma</h1>
 
                         <table class="min-w-full table-auto border-collapse border border-gray-200">
                             <thead class="bg-gray-100 text-gray-600 text-sm uppercase font-semibold">
@@ -79,7 +79,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700 text-sm">
-                                @foreach($diplomas as $diploma)
+                                @foreach($diploma as $diploma)
                                     <tr class="border-b">
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->id }}</td>
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->titulo }}</td>
@@ -98,7 +98,7 @@
                                             @endif
                                         </td>
                                         <td class="border border-gray-300 px-4 py-2">
-                                            <a href="{{ route('dashboard.rh.diplomas.show', $diploma->id) }}" class="text-blue-600 hover:underline">
+                                            <a href="{{ route('dashboard.rh.diploma.show', $diploma->id) }}" class="text-blue-600 hover:underline">
                                                 Visualizar
                                             </a>
                                         </td>

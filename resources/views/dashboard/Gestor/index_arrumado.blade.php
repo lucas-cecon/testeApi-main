@@ -1,19 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Load Inter font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Load Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-    
-    <title>Center Icons</title>
-    
-    <!-- Custom Tailwind Setup for Inter Font -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
+    <title>SENAI - Gestor Dashboard</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
       .font-inter {
