@@ -16,17 +16,13 @@
 <body class="font-inter bg-gray-100">
 
   <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
-        
-     <div class="w-11/12 items-center mb-2"> <!-- Adjusted for positioning -->
-            <h2 class="text-3x2 text-red-500 font-black uppercase">Dashboard</h2>
-    </div>
+  @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Ponto virtual'])
      
-    <div class="w-11/12 h-0.5 bg-red-500 mb-4"></div> 
 
      <form method="GET" action="{{ route('dashboard.gestor.pedidos_ticket') }}" id="searchForm" style="margin-bottom: 20px;">
-        <input type="text" id="searchInput" name="search" placeholder="Buscar por funcionário" value="{{ request()->input('search') }}">
-        <button type="submit">Buscar</button>
-        <button type="button" onclick="document.getElementById('searchInput').value = ''; document.getElementById('searchForm').submit();">Limpar</button>
+        <input type="text" class="block w-1/1 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="searchInput" name="search" placeholder="Buscar por funcionário" value="{{ request()->input('search') }}">
+        <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+        <button type="button" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="document.getElementById('searchInput').value = ''; document.getElementById('searchForm').submit();">Limpar</button>
     </form>
 
 

@@ -11,7 +11,7 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
         
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'AApm'])
+    @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'AAPM'])
 
         <div class="flex space-x-2">
             <a href=""><button class="new-order-btn">
