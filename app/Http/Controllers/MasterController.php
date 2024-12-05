@@ -12,9 +12,38 @@ use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\StatusAluno;
 use App\Models\ApmStatus;
+use App\Models\CargoFuncionario;
 
 class MasterController extends Controller
 {
+
+     public function listarFuncionarios(Request $request)
+    {
+        $query = Funcionario::with(['cargo', 'horario']);
+    
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nome', 'LIKE', "%$search%")
+                  ->orWhere('cpf', 'LIKE', "%$search%");
+        }
+    
+        $funcionarios = $query->get();
+    
+        // Substitui o ID pelos objetos relacionados de cargo e horário
+        foreach ($funcionarios as $funcionario) {
+            $funcionario->cargo = CargoFuncionario::find($funcionario->cargo);
+            $funcionario->horario = BancoDeHoras::find($funcionario->horario);
+        }
+
+        // Se a requisição espera JSON, retorna os funcionários em formato JSON
+        if ($request->expectsJson()) {
+            return response()->json($funcionarios, 200);
+        }
+
+        return view('funcionario', compact('funcionarios'));
+    }
+
+
     public function index()
     {
         // Obtém o ID do funcionário logado (usando session ou Auth)

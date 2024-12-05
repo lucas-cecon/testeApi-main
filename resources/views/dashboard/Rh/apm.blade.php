@@ -19,12 +19,6 @@
         ])
 
         <div class="flex space-x-2">
-            <a href=""><button class="new-order-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                Adicionar Alunos
-            </button></a>
             <a href="{{route('dashboard.rh')}}"><button class="new-order-btn" stroke="currentColor">
                 Voltar
             </button></a>
