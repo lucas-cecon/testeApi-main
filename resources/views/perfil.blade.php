@@ -1,3 +1,23 @@
+@php
+    $route = '';
+    switch($cargo) {
+        case 1:
+            $route = route('dashboard.rh');
+            break;
+        case 2:
+            $route = route('dashboard.professor');
+            break;
+        case 3:
+            $route = route('dashboard.gestor');
+            break;
+        case 4:
+            $route = route('dashboard.master');
+            break;
+    }
+@endphp
+
+{{ $route }}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,7 +41,7 @@
             <p>Nenhuma informação do funcionário encontrada.</p>
         @endif
 
-        <a href="{{ route('funcionarios.listar') }}">
+        <a href="{{ route('$route') }}">
             <button style="margin-top: 20px;">Voltar para Lista de Funcionários</button>
         </a>
     </div>

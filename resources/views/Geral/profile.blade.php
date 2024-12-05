@@ -6,6 +6,7 @@
     <title>SENAI - Editar perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -74,7 +75,7 @@
         @elseif($funcionario->cargo == 2)
             <a href="{{ route('dashboard.professor') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Professor</a>
         @elseif($funcionario->cargo == 3)
-            <a href="{{ route('dashboard.gestor') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Gestor</a>
+            <a href="{{ route('dashboard.gestor.index_arrumado') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Gestor</a>
         @elseif($funcionario->cargo == 4)
             <a href="{{ route('dashboard.master') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Master</a>
         @endif
