@@ -42,7 +42,7 @@
             </div>
             @endif
 
-            <form action="{{ route('dashboard.master.atualizar') }}" method="POST">
+            <form action="{{ route('dashboard.master.atualizar', ['id' => $funcionario->ID_funcionario]) }}" method="POST">
             @csrf
             @method('PUT')
                 <!-- Form Grid -->
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-group flex flex-col">
-                        <label for="status_confirmation" class="font-bold mb-2">Confirme a senha:</label>
+                        <label for="senha_confirmation" class="font-bold mb-2">Confirme a senha:</label>
                         <input name="senha_confirmation" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full">
                     </div>
 

@@ -140,6 +140,28 @@ class MasterController extends Controller
         }
     }
 
+     public function deletarFuncionario($id)
+    {
+        try {
+            $funcionario = Funcionario::findOrFail($id); // Verifica se o funcionário existe
+            $funcionario->delete(); // Exclui o funcionário
+
+            // Se a requisição espera JSON, retorna uma resposta de sucesso em formato JSON
+            if (request()->expectsJson()) {
+                return response()->json(['message' => 'Funcionário excluído com sucesso!'], 200);
+            }
+
+            return redirect()->route('funcionarios.listar')->with('success', 'Funcionário excluído com sucesso!');
+        } catch (\Exception $e) {
+            // Se a requisição espera JSON, retorna um erro em formato JSON
+            if (request()->expectsJson()) {
+                return response()->json(['error' => 'Erro ao excluir funcionário.'], 400);
+            }
+
+            return redirect()->route('dashboard.master.funcionario')->with('error', 'Erro ao excluir funcionário.');
+        }
+    }
+
     public function showEditarForm($id)
     {
         $funcionario = Funcionario::findOrFail($id);

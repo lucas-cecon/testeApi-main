@@ -65,7 +65,7 @@
                         <td class="border border-gray-300 px-4 py-2">{{ $funcionario->horario->hora_inicio ?? 'N/A' }} - {{ $funcionario->horario->hora_fim ?? 'N/A' }}</td>
                         <td class="border border-gray-300 px-4 py-2">
                             <a href="{{ route('dashboard.master.funcionarios.editar', ['id' => $funcionario->ID_funcionario]) }}">Editar</a>
-                            <form action="{{ route('api.funcionarios.deletar', ['id' => $funcionario->ID_funcionario]) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('dashboard.master.funcionarios.deletar', ['id' => $funcionario->ID_funcionario]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')">Deletar</button>

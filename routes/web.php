@@ -193,9 +193,10 @@ Route::prefix('api')->group(function () {
 
     Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.funcionario'); 
     Route::get('/dashboard/master/cadastrar', [MasterController::class, 'cadastrarFuncionario'])->name('dashboard.master.cadastrar');
-    Route::post('/dashboard/master/adicionar', [MasterController::class, 'adicionarFuncionario'])->name('dashdashboard.master.atualizarboard.master.funcionarios.adicionar');
-    Route::put('/dashboard/master/atualizar/{id}', [MasterController::class, 'atualizarFuncionario'])->name('');
+    Route::post('/dashboard/master/adicionar', [MasterController::class, 'adicionarFuncionario'])->name('dashboard.master.funcionarios.adicionar');
+    Route::put('/dashboard/master/atualizar/{id}', [MasterController::class, 'atualizarFuncionario'])->name('dashboard.master.atualizar');
     Route::get('/dashboard/master/editar/{id}', [MasterController::class, 'showEditarForm'])->name('dashboard.master.funcionarios.editar');
+    Route::delete('/dashboard/master/deletar/{id}', [MasterController::class, 'deletarFuncionario'])->name('dashboard.master.funcionarios.deletar');
     // Route::delete('/funcionarios/deletar/{id}', [MasterioController::class, 'deletarFuncionario'])->name('funcionarios.deletar');
 
 
