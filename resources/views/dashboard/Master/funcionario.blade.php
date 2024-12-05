@@ -11,13 +11,17 @@
     
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Diplomas'])
+        @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Funcionários',
+            'logoUrl' => route('dashboard.master') // Defina a URL desejada
+        ])
 
     <h1>Lista de Funcionários</h1>
 
 
     <!-- Botão para cadastrar novo funcionário -->
-    <a href="{{ route('funcionarios.cadastrar') }}"><button class="new-order-btn"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
+    <a href="{{ route('dashboard.master.cadastrar') }}"><button class="new-order-btn"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>Cadastrar novo Funcionário</button>
     </a>
@@ -72,10 +76,6 @@
             @endif
         </tbody>
     </table>
-
-    <a href="{{ route('alunos.listar') }}">
-        <button style="margin-bottom: 20px;">Ver Todos os Alunos</button>
-    </a>
 
     <br>
 

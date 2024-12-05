@@ -190,7 +190,9 @@ Route::prefix('api')->group(function () {
     Route::get('/dashboard/master/alunos/{id}', [MasterController::class, 'showAluno'])->name('dashboard.master.alunos.detalhes');;
     Route::get('/dashboard/master/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.master.pedidos_ticket'); 
 
-    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.listar'); 
+    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.funcionario'); 
+    Route::get('/dashboard/master/cadastrar', [MasterController::class, 'cadastrarFuncionario'])->name('dashboard.master.cadastrar');
+    Route::post('/funcionarios/adicionar', [MasterController::class, 'adicionarFuncionario'])->name('dashboard.master.funcionarios.adicionar');
 
 
     Route::get('/dashboard/master/diploma', [diplomaController::class, 'index'])->name('dashboard.master.diploma'); // Exibe todos o
