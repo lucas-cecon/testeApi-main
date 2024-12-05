@@ -6,7 +6,7 @@
         <!-- Texto "Secretaria" -->
         <span class="secretaria-text">{{ $sectionTitle ?? 'Secretaria' }}</span>
     </div>
-    <a href="{{ route('perfil') }}">
+    <a href="{{ route('/perfil') }}">
         <button class="text-red-500 text-1xl font-black uppercase hover:underline">
             Ver Perfil
         </button>
