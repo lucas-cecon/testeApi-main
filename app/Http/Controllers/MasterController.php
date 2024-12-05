@@ -93,6 +93,60 @@ class MasterController extends Controller
         return view('dashboard.master.cadastrar_funcionario', compact('cargos', 'horarios'));
     }
 
+    public function atualizarFuncionario(Request $request, $id)
+    {
+        // Validação dos campos
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|size:11|unique:funcionarios,cpf,' . $id . ',ID_funcionario', // CPF único, exceto para o próprio funcionário
+            'nif' => 'required|string|max:9', // NIF com no máximo 9 caracteres
+            'cargo' => 'required|exists:cargo_funcionarios,id', // O cargo deve existir na tabela cargo_funcionarios
+            'horario' => 'required|exists:banco_de_horas,id', // O horário deve existir na tabela banco_de_horas
+            'senha' => 'nullable|string|min:6|confirmed', // Senha confirmada, mas opcional
+        ], [
+            'cpf.unique' => 'O CPF já está cadastrado.',
+            'nif.max' => 'O NIF deve ter no máximo 9 caracteres.',
+            'senha.confirmed' => 'A confirmação de senha não corresponde.',
+            'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
+        ]);
+
+        try {
+            $funcionario = Funcionario::findOrFail($id);  // Garante que está usando o id correto
+            $funcionario->nome = $request->input('nome');
+            $funcionario->cpf = $request->input('cpf');
+            $funcionario->nif = $request->input('nif');
+            $funcionario->cargo = $request->input('cargo');
+            $funcionario->horario = $request->input('horario');
+
+            if ($request->filled('senha')) {
+                $funcionario->senha = bcrypt($request->input('senha'));
+            }
+
+            $funcionario->save();
+
+            // Se a requisição espera JSON, retorna uma resposta de sucesso em formato JSON
+            if ($request->expectsJson()) {
+                return response()->json(['message' => 'Funcionário atualizado com sucesso!'], 200);
+            }
+
+            return redirect()->route('dashboard.master.funcionario')->with('success', 'Funcionário atualizado com sucesso!');
+        } catch (\Exception $e) {
+            // Se a requisição espera JSON, retorna um erro em formato JSON
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Erro ao atualizar funcionário.'], 400);
+            }
+
+            return redirect()->back()->with('error', 'Erro ao atualizar funcionário.');
+        }
+    }
+
+    public function showEditarForm($id)
+    {
+        $funcionario = Funcionario::findOrFail($id);
+        $cargos = CargoFuncionario::all();
+        $horarios = BancoDeHoras::all();
+        return view('dashboard.master.editar_funcionario', compact('funcionario', 'cargos', 'horarios'));
+    }
 
     public function index()
     {
