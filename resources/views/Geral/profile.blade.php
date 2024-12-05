@@ -70,13 +70,13 @@
     <!-- Navegação de acordo com o cargo -->
     <div>
         @if($funcionario->cargo == 1)
-            <a href="{{ route('funcionarios.listar') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard RH</a>
+            <a href="{{ route('dashboard.rh') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard RH</a>
         @elseif($funcionario->cargo == 2)
-            <a href="{{ route('funcionarios.listar') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Professor</a>
+            <a href="{{ route('dashboard.professor') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Professor</a>
         @elseif($funcionario->cargo == 3)
-            <a href="{{ route('funcionarios.listar') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Gestor</a>
+            <a href="{{ route('dashboard.gestor') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Gestor</a>
         @elseif($funcionario->cargo == 4)
-            <a href="{{ route('funcionarios.listar') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Master</a>
+            <a href="{{ route('dashboard.master') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded border border-blue-700 hover:bg-blue-700">Voltar para o Dashboard Master</a>
         @endif
     </div>
     </div>

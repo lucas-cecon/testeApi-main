@@ -118,32 +118,26 @@ class DiplomaController extends Controller
         return redirect()->route('dashboard.rh.diplomas')->with('success', 'Diploma criado com sucesso!');
     }
 
-    public function associarAluno(Request $request, $diplomaId)
-    {
-        $request->validate([
-            'aluno_id' => 'required|exists:tabela_alunos,id_aluno', // Certifique-se de que o aluno existe
-        ]);
+public function associarAluno(Request $request, $diplomaId)
+{
+    $request->validate([
+        'aluno_ids' => 'required|array', // Certifique-se de que é um array de IDs
+        'aluno_ids.*' => 'exists:tabela_alunos,id_aluno', // Validação de cada ID
+    ]);
 
-        // Cria a relação no ControleDiploma
+    // Associa os alunos ao diploma
+    foreach ($request->aluno_ids as $alunoId) {
         ControleDiploma::create([
-            'aluno_id' => $request->input('aluno_id'),
-            'diploma' => $diplomaId,
+            'aluno_id' => $alunoId,
+            'diploma_id' => $diplomaId,
         ]);
-
-        return redirect()->route('dashboard.rh.diplomas.show', $diplomaId)->with('success', 'Aluno adicionado ao diploma com sucesso!');
     }
 
-    public function removerAluno($relacaoId)
-    {
-        // Busca a relação do aluno com o diploma
-        $relacao = ControleDiploma::findOrFail($relacaoId);
-    
-        // Limpa o campo diploma, definindo como nulo
-        $relacao->diploma = null; // Define como null para remover a associação
-        $relacao->save();
-    
-        return redirect()->back()->with('success', 'Aluno removido do diploma com sucesso!');
-    }
+    return response()->json([
+        'message' => 'Alunos adicionados com sucesso!',
+    ]);
+}
+
 
     public function atualizarStatus($id)
     {

@@ -28,7 +28,7 @@
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
             'pageTitle' => 'Dashboard',
-            'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
+            'logoUrl' => route('dashboard.rh')
         ])
 
         <!-- Title -->

@@ -54,6 +54,7 @@ Route::middleware([\App\Http\Middleware\VerificarToken::class])->group(function 
     Route::get('/dashboard/rh', [RHController::class, 'index'])->name('dashboard.rh');
     Route::get('/dashboard/rh/pedidos', [RHController::class, 'pedidos'])->name('dashboard.rh.pedidos');
     Route::get('/dashboard/rh/pesquisar', [RHController::class, 'pesquisar'])->name('dashboard.rh.pesquisar');
+    Route::get('/rh/alunos/pesquisar', [RHController::class, 'pesquisarAlunos'])->name('alunos.pesquisar');
     Route::post('/dashboard/rh/aprovar/{id}', [RHController::class, 'aprovarTicket'])->name('dashboard.rh.aprovar_ticket'); // Método POST para aprovar
     Route::post('/dashboard/rh/rejeitar/{id}', [RHController::class, 'rejeitarTicket'])->name('dashboard.rh.rejeitar_ticket'); // Método POST para rejeitar
     Route::get('/dashboard/rh/ticket/{id}', [RHController::class, 'showTicket'])->name('dashboard.rh.show_ticket'); // Adicionada a rota para detalhes do ticket do RH
@@ -73,7 +74,7 @@ Route::post('/dashboard/rh/diplomas/associar', [DiplomaController::class, 'assoc
 
 Route::get('/dashboard/rh/create', [DiplomaController::class, 'create'])->name('diplomas.create.rh');
 Route::post('/dashboard/rh/diplomas', [DiplomaController::class, 'store'])->name('diplomas.store');
-Route::post('/dashboard/rh/diplomas/{diploma}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
+Route::post('/dashboard/rh/diplomas/{diplomaId}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
 Route::delete('/dashboard/rh/diplomas/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diplomas.remover');
 Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atualizarStatus'])->name('diplomas.atualizarStatus');
 

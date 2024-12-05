@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ControleDePontoTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Aluno;
 
 class RHController extends Controller
 {
@@ -78,4 +79,26 @@ class RHController extends Controller
         // Retornando a view com os detalhes do ticket
         return view('dashboard.rh.analizar_solicitacoes', compact('ticket')); // Mantenha ou altere o nome da view conforme necessário
     }
+public function pesquisarAlunos(Request $request)
+{
+    $request->validate([
+        'search' => 'nullable|string|max:255', // Garante que a pesquisa seja uma string válida
+    ]);
+
+    $query = $request->input('search');
+
+    if ($query) {
+        $alunosFiltrados = Aluno::where(function($queryBuilder) use ($query) {
+            $queryBuilder->where('nome', 'LIKE', "%{$query}%")
+                         ->orWhere('cpf_aluno', 'LIKE', "%{$query}%");
+        })->get();
+
+        return response()->json($alunosFiltrados);
+    }
+
+    return response()->json([]);
+}
+
+
+
 }
