@@ -1,3 +1,7 @@
+@php
+    $alunosFiltrados = $alunosFiltrados ?? collect();
+@endphp
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -85,19 +89,38 @@ Desconhecido
 
         <div class="flex flex-col grid-cols-">
             <h2 class="font-bold mb-2">Adicionar Aluno ao Diploma</h2>
-    <form method="POST" action="{{ route('diplomas.associar', $diploma->id) }}">
-        @csrf
+
+            <form id="filterForm" class="flex flex-col md:flex-row items-center justify-center mb-6">
+    <input 
+        type="text" 
+        name="search" 
+        class="block w-full md:w-1/1 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" 
+        placeholder="Buscar por Nome do Aluno ou CPF" 
+        value="{{ request('search') }}"
+    />
+    <div class="flex gap-2 mt-4 md:mt-0 md:ml-4">
+        <button 
+            type="submit" 
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+            Filtrar
+        </button>
+    </div>
+</form>
+
+<ul id="alunosLista" class="rounded-lg p-4">
+    <!-- A lista será populada aqui via AJAX -->
+</ul>
+
+
+
+
+
+        
         <div>
-            <select id="aluno_id" name="aluno_id" class="bg-gray-200 border border-red-500 p-2 rounded-md w-full mb-2" required>
-                <option value="">Selecione um aluno</option>
-                @foreach ($todosAlunos as $aluno)
-                    <option value="{{ $aluno->id_aluno }}">{{ $aluno->nome }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div>
-            <button type="submit" class=" btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Adicionar Aluno</button>
-        </div>
+    <button type="button" id="addAlunoButton" class="btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">
+        Adicionar Aluno
+    </button>
+</div>
     </form>
 
         </div>
@@ -157,11 +180,100 @@ Desconhecido
 
 
     </div>
+    
 
 
 
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    let alunoId = null;  // Variável para armazenar o ID do aluno selecionado
+
+    // Quando um aluno for clicado
+    $(document).on('click', '.aluno-item', function() {
+        alunoId = $(this).data('id');  // Captura o ID do aluno
+        console.log('Aluno selecionado: ', alunoId);  // Exibe o ID do aluno selecionado no console
+    });
+
+    // Quando o formulário de pesquisa for enviado
+    $('#filterForm').on('submit', function(event) {
+        event.preventDefault();  // Impede o envio tradicional do formulário
+
+        let searchQuery = $("input[name='search']").val();  // Pega o valor do campo de busca
+
+        // Envia a requisição AJAX para buscar os alunos
+        $.ajax({
+            url: '{{ route('alunos.pesquisar') }}',  // A rota para buscar alunos
+            method: 'GET',
+            data: { search: searchQuery },
+            success: function(response) {
+                // Limpa a lista de alunos antes de adicionar novos resultados
+                $('#alunosLista').html('');
+
+                if (response.length > 0) {
+                    // Se houver alunos encontrados, adicione-os à lista
+                    $.each(response, function(index, aluno) {
+                        $('#alunosLista').append(`
+                            <li class="p-2 border-b last:border-0 aluno-item" data-id="${aluno.id}">
+                                <input type="checkbox" class="aluno-checkbox" data-id="${aluno.id}">
+                                <strong>Nome:</strong> ${aluno.nome} <br>
+                                <strong>CPF:</strong> ${aluno.cpf_aluno}
+                            </li>
+                        `);
+                    });
+                } else {
+                    // Se não houver resultados, exiba uma mensagem
+                    $('#alunosLista').html('<p class="text-gray-500">Nenhum aluno encontrado.</p>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erro na requisição AJAX:', error);
+                alert('Erro na requisição AJAX');
+            }
+        });
+    });
+
+    // Quando o formulário de adicionar alunos for enviado
+    $('#adicionarAlunoForm').on('submit', function(event) {
+        event.preventDefault();  // Impede o envio tradicional do formulário
+
+        // Coletar os IDs dos alunos selecionados
+        let alunoIds = [];
+        $('.aluno-checkbox:checked').each(function() {
+            alunoIds.push($(this).data('id'));  // Adiciona o ID do aluno à lista
+        });
+
+        if (alunoIds.length === 0) {
+            alert('Por favor, selecione pelo menos um aluno.');
+            return;
+        }
+
+        console.log("Alunos selecionados:", alunoIds);  // Verifica os IDs dos alunos
+
+        $.ajax({
+            url: '{{ route('diplomas.associar', ['diplomaId' => $diploma->id]) }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                aluno_ids: alunoIds,  // Envia os IDs dos alunos
+            },
+            success: function(response) {
+                console.log(response);  // Verifique a resposta no console
+                alert(response.message);  // Exibe mensagem de sucesso
+            },
+            error: function(xhr, status, error) {
+                console.error('Erro na requisição AJAX:', error);
+                console.error('Detalhes da resposta:', xhr.responseText);  // Exibe resposta detalhada
+                alert('Erro na requisição AJAX');
+            }
+        });
+    });
+});
+
+</script>
 
 
 {{-- 
