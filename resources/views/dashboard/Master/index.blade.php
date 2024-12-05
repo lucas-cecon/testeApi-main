@@ -26,7 +26,11 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
 
-        @include('components.header', ['sectionTitle' => 'Secretaria', 'pageTitle' => 'Dashboard'])
+         @include('components.header', [
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Detalhes do Aluno',
+            'logoUrl' => route('dashboard.master')  // Defina a URL desejada
+        ])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-20">Seja bem-vindo, {{ session('nome') }}!<br></h1>
@@ -35,7 +39,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-20"> <!-- Grid for responsivity -->
             <!-- Icon 1 -->
             <div class="flex flex-col items-center">
-                <a href="{{ route('dashboard.master.listar') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                <a href="{{ route('dashboard.master.funcionario') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 1" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
                 <a href="{{url('diploma')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Diplomas</p></a>

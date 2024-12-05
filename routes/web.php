@@ -191,7 +191,12 @@ Route::prefix('api')->group(function () {
     Route::get('/dashboard/master/alunos/{id}', [MasterController::class, 'showAluno'])->name('dashboard.master.alunos.detalhes');;
     Route::get('/dashboard/master/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.master.pedidos_ticket'); 
 
-    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.listar'); 
+    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.funcionario'); 
+    Route::get('/dashboard/master/cadastrar', [MasterController::class, 'cadastrarFuncionario'])->name('dashboard.master.cadastrar');
+    Route::post('/dashboard/master/adicionar', [MasterController::class, 'adicionarFuncionario'])->name('dashdashboard.master.atualizarboard.master.funcionarios.adicionar');
+    Route::put('/dashboard/master/atualizar/{id}', [MasterController::class, 'atualizarFuncionario'])->name('');
+    Route::get('/dashboard/master/editar/{id}', [MasterController::class, 'showEditarForm'])->name('dashboard.master.funcionarios.editar');
+    // Route::delete('/funcionarios/deletar/{id}', [MasterioController::class, 'deletarFuncionario'])->name('funcionarios.deletar');
 
 
     Route::get('/dashboard/master/diploma', [diplomaController::class, 'index'])->name('dashboard.master.diploma'); // Exibe todos o
