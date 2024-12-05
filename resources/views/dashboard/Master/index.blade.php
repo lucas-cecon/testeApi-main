@@ -32,10 +32,10 @@
         <h1 class="text-3x2 font-black mt-10 mb-20">Seja bem-vindo, {{ session('nome') }}!<br></h1>
 
         <!-- Responsive Grid for Icons -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20"> <!-- Grid for responsivity -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-20"> <!-- Grid for responsivity -->
             <!-- Icon 1 -->
             <div class="flex flex-col items-center">
-                <a href="{{ route('dashboard.master.diploma') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                <a href="{{ route('dashboard.master.listar') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 1" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
                 <a href="{{url('diploma')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Diplomas</p></a>
@@ -51,14 +51,14 @@
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
             </div>
 
-            <!-- Icon 3 -->
+            {{-- <!-- Icon 3 -->
             <a href="{{ route('dashboard.master.pedidos_ticket')}}"><div class="flex flex-col items-center">
                 <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div>
                 <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Ponto<br>Virtual</p>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
-            </div></a>
+            </div></a> --}}
         </div>
       
     </div>

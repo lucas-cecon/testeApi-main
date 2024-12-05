@@ -13,7 +13,7 @@
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Diplomas',
+            'pageTitle' => 'Ponto virtual',
             'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
         ])
     

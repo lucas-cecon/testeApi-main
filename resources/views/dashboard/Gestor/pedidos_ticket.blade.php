@@ -20,7 +20,7 @@
   <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
           @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Dashboard',
+            'pageTitle' => 'ponto virtual',
             'logoUrl' => route('dashboard.gestor.index_arrumado')  // Defina a URL desejada
         ])
      

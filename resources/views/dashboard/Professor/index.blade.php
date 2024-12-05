@@ -105,7 +105,7 @@
 
 
 
-
+{{-- 
 <!-- Exibir mensagens de sucesso ou erro -->
 @if (session('success'))
     <div style="color: green;">
@@ -118,7 +118,7 @@
         {{ session('error') }}
     </div>
 @endif
-{{-- 
+
 <!-- Exibir informações do token e nome do usuário logado -->
 @if (session('token') && session('nome') && session('cargo'))
     <div style="color: blue;">

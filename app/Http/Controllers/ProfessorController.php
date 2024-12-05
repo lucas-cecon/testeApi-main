@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\BancoDeHoras;
 use App\Models\Funcionario;
 
+
 class ProfessorController extends Controller
 {
     public function index()

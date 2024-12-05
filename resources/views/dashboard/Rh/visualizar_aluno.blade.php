@@ -31,7 +31,7 @@
 
 
 
-    <div class="bg-gray-200 p-8 rounded-md shadow-md w-full max-w-2xl"> <!-- Tornado responsivo com w-full -->
+    <div class="bg-gray-200 p-8 rounded-md shadow-md w-full max-w-2xl "> <!-- Tornado responsivo com w-full -->
             <h2 class="text-lg font-bold mb-4">Pedido</h2>
                  <!-- Form Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <!-- Responsivo: 1 coluna em telas pequenas, 2 colunas em telas maiores -->

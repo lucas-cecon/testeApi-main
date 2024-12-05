@@ -20,7 +20,7 @@
         
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Ponto Virtual',
+            'pageTitle' => 'Detalhes do Aluno',
             'logoUrl' => route('dashboard.master')  // Defina a URL desejada
         ])
 
