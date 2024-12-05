@@ -21,7 +21,7 @@
         
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Ponto Virtual',
+            'pageTitle' => 'Dados Alunos',
             'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
         ])
 

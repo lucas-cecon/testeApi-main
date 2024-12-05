@@ -59,7 +59,7 @@
 
         <!-- Formulário de Pesquisa -->
         <div class="container mx-auto py-6 w-11/12">
-            <div class="shadow-md rounded-lg overflow-hidden">
+            <div class="rounded-lg overflow-hidden">
                 <div class="overflow-x-auto bg-gray-100"> <!-- Fundo alterado -->
                     @if (!empty($error))
                         <div class="bg-red-500 text-white p-4 mb-4">{{ $error }}</div>
@@ -88,7 +88,9 @@
                         </form>
 
                         <h1 class="text-center text-xl font-semibold mb-4">Lista de Alunos</h1>
-
+                                <div class="container mx-auto py-6 w-11/12 ">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <div class="overflow-x-auto"> <!-- Permitir rolagem horizontal -->
                         <table class="min-w-full table-auto border-collapse border border-gray-200">
                             <thead class="bg-gray-100 text-gray-600 text-sm uppercase font-semibold">
                                 <tr>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
     
-    <title>SENAI - Master</title>
+    <title>SENAI - Dashboard Master</title>
     
     <!-- Custom Tailwind Setup for Inter Font -->
     <style>
@@ -28,7 +28,7 @@
 
          @include('components.header', [
             'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Detalhes do Aluno',
+            'pageTitle' => 'Dashboard',
             'logoUrl' => route('dashboard.master')  // Defina a URL desejada
         ])
 
@@ -42,14 +42,14 @@
                 <a href="{{ route('dashboard.master.funcionario') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
                     <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 1" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
-                <a href="{{url('diploma')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Diplomas</p></a>
+                <a href="{{url('diploma')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Lista<br>Funcionários</p></a>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
             </div>
 
             <!-- Icon 2 -->
             <div class="flex flex-col items-center">
                 <a href="{{ route('dashboard.master.alunos') }}"><div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
-                    <img src="{{ asset('assets/img/icone_dashboard_2.svg') }}" alt="Icon 2" class="w-32 h-32 transition-opacity hover:opacity-80">
+                    <img src="{{ asset('assets/img/icone_dashboard_1.svg') }}" alt="Icon 2" class="w-32 h-32 transition-opacity hover:opacity-80">
                 </div></a>
                 <a href="{{url('aapm')}}"><p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Lista<br>alunos</p></a>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
