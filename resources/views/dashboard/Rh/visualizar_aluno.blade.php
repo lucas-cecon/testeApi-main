@@ -27,7 +27,7 @@
 
         
 
-        <h2 class="text-3x2 font-black uppercase mb-4">Informações sobre meu pedido:</h2>
+        <h2 class="text-3x2 font-black uppercase mb-4">Informações sobre o aluno:</h2>
 
 
 
@@ -66,21 +66,8 @@
                     </div>
 
                     <div class="form-group flex flex-col">
-                        <label for="data-fim" class="font-bold mb-2">Status:</label>
-                        <input type="text" name="data_fim" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $aluno->statusAluno->nome ?? 'N/A' }}" readonly>
-                    </input>
-                    </div>
-
-                    <div class="form-group flex flex-col">
                         <label for="data-fim" class="font-bold mb-2">AAPM status:</label>
-                        <input type="text" name="data_fim" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $aluno->apmStatus->nome ?? 'N/A' }}" readonly>
-                        
-                    </input>
-                    </div>
-
-                    <div class="form-group flex flex-col">
-                        <label for="data-fim" class="font-bold mb-2">Email:</label>
-                        <input type="text" name="data_fim" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $aluno->email }}" readonly>
+                        <input type="text" name="data_fim" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" value="{{ $aluno->apmStatus->nome ?? 'N/A' }}">
                         
                     </input>
                     </div>

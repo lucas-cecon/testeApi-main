@@ -105,8 +105,7 @@ class DiplomaController extends Controller
         $validated = $request->validate([
             'titulo' => 'required|string|max:255',
             'lote_diploma' => 'required|string|max:255',
-            'quant_diploma' => 'required|integer|min:1',
-            'turma_diploma' => 'required|string|max:255'
+            'quant_diploma' => 'required|integer|min:1'
         ]);
     
         // Adiciona o status ao array de dados validados

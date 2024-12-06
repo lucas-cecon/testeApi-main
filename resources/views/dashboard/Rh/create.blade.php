@@ -1,16 +1,3 @@
-@php
-    $logoUrl = null;
-    if ($funcionario->cargo == 1) {
-        $logoUrl = route('dashboard.rh');
-    } elseif ($funcionario->cargo == 2) {
-        $logoUrl = route('dashboard.professor');
-    } elseif ($funcionario->cargo == 3) {
-        $logoUrl = route('dashboard.gestor.index_arrumado');
-    } elseif ($funcionario->cargo == 4) {
-        $logoUrl = route('dashboard.master');
-    }
-@endphp
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -75,15 +62,8 @@
                         <label for="descricao" class="font-bold mb-2">Quantidade de Diplomas:</label>
                         <input type="number" id="quant_diploma" name="quant_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full">
                     </div>
-
-                    <div class="form-group flex flex-col">
-                        <label for="data-inicio" class="font-bold mb-2">Turma:</label>
-                        <select id="turma_diploma" name="turma_diploma" class="form-control bg-gray-200 border border-red-500 p-2 rounded-md w-full" required>
-                        <option value="">Selecione uma turma</option>
-                        @foreach ($cursos as $curso)
-                            <option value="{{ $curso->id }}">{{ $curso->curso }}</option>
-                        @endforeach
-                        </select>
+                    <div>
+                        
                     </div>
 
                     <!-- Confirmar -->
