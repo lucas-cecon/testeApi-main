@@ -11,6 +11,7 @@
           font-family: 'Inter', sans-serif;
       }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
 <body>
 <body class="font-inter">

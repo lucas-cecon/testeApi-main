@@ -26,6 +26,7 @@
     <title>SENAI - Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
 <body class="bg-gray-100">
     <div class="container">

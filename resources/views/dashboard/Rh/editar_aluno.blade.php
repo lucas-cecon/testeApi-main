@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Aluno</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
 <body>
     <h1>Editar Aluno</h1>

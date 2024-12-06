@@ -1,3 +1,4 @@
+<link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 <h1>Detalhes do Diploma</h1>
 
 <p><strong>ID:</strong> {{ $diploma->id }}</p>
