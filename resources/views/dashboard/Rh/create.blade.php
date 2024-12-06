@@ -31,11 +31,10 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
         @include('components.header', [
-    'sectionTitle' => 'Secretaria',
-    'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
-])
-
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.rh')
+        ])
         <h2 class="text-3x2 font-black uppercase mb-4">Informações para criação de diploma:</h2>
 
         

@@ -24,10 +24,10 @@
 <body class="font-inter bg-gray-100">
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative">
         @include('components.header', [
-    'sectionTitle' => 'Secretaria',
-    'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
-])
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.rh')
+        ])
 
         <!-- Botões de Ação -->
         <div class="flex space-x-4 mt-4">

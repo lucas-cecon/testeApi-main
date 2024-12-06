@@ -26,11 +26,10 @@
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
         
     @include('components.header', [
-    'sectionTitle' => 'Secretaria',
-    'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
-])
-
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.rh')
+        ])
         <div class="flex space-x-2">
             <a href="{{route('dashboard.rh')}}"><button class="new-order-btn" stroke="currentColor">
                 Voltar
