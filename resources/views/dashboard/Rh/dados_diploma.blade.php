@@ -34,10 +34,10 @@
 
     <div class="flex flex-col items-center mb-10 bg-gray-100"> 
         @include('components.header', [
-    'sectionTitle' => 'Secretaria',
-    'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
-])
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.rh')
+        ])
 
         <h2 class="text-3x2 font-black uppercase mb-4">Informações sobre o diploma:</h2>
 
