@@ -1,3 +1,16 @@
+@php
+    $logoUrl = null;
+    if ($funcionario->cargo == 1) {
+        $logoUrl = route('dashboard.rh');
+    } elseif ($funcionario->cargo == 2) {
+        $logoUrl = route('dashboard.professor');
+    } elseif ($funcionario->cargo == 3) {
+        $logoUrl = route('dashboard.gestor.index_arrumado');
+    } elseif ($funcionario->cargo == 4) {
+        $logoUrl = route('dashboard.master');
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,10 +25,10 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
         @include('components.header', [
-            'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Ponto virtual',
-            'logoUrl' => route('dashboard.rh')  // Defina a URL desejada
-        ])
+    'sectionTitle' => 'Secretaria',
+    'pageTitle' => 'Dashboard',
+    'logoUrl' => $logoUrl
+])
     
         <div class="container mx-auto py-6 w-11/12">
             <div class="rounded-lg overflow-hidden">

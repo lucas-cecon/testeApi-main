@@ -1,3 +1,16 @@
+@php
+    $logoUrl = null;
+    if ($funcionario->cargo == 1) {
+        $logoUrl = route('dashboard.rh');
+    } elseif ($funcionario->cargo == 2) {
+        $logoUrl = route('dashboard.professor');
+    } elseif ($funcionario->cargo == 3) {
+        $logoUrl = route('dashboard.gestor.index_arrumado');
+    } elseif ($funcionario->cargo == 4) {
+        $logoUrl = route('dashboard.master');
+    }
+@endphp
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,11 +38,11 @@
 
     <div class="flex flex-col items-center min-h-screen bg-gray-100"> 
         
-        @include('components.header', [
-            'sectionTitle' => 'Secretaria',
-            'pageTitle' => 'Dashboard',
-            'logoUrl' => route('dashboard.rh')
-        ])
+       @include('components.header', [
+    'sectionTitle' => 'Secretaria',
+    'pageTitle' => 'Dashboard',
+    'logoUrl' => $logoUrl
+])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-20">Bem-vindo, {{ session('nome') }}!</h1>
