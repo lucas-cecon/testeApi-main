@@ -1,15 +1,4 @@
-@php
-    $logoUrl = null;
-    if ($funcionario->cargo == 1) {
-        $logoUrl = route('dashboard.rh');
-    } elseif ($funcionario->cargo == 2) {
-        $logoUrl = route('dashboard.professor');
-    } elseif ($funcionario->cargo == 3) {
-        $logoUrl = route('dashboard.gestor.index_arrumado');
-    } elseif ($funcionario->cargo == 4) {
-        $logoUrl = route('dashboard.master');
-    }
-@endphp
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -36,7 +25,7 @@
         @include('components.header', [
     'sectionTitle' => 'Secretaria',
     'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
+    'logoUrl' => route('dashboard.professor')
 ])
 
         <!-- Title -->
@@ -94,7 +83,7 @@
                                 </td>
 
                                 <td>
-                                <a href="{{ route('dashboard.professor.show_ticket', $ticket->id) }}" class="text-blue-500 px-4 py-2 ">Visualizar</a>
+                                <a href="{{ route('dashboard.professor.show_ticket', $ticket->id) }}" class="text-decoration-line: underline text-blue-500 px-4 py-2 ">Visualizar</a>
                                 </td>
                             </tr>
                             @endforeach

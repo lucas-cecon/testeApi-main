@@ -197,6 +197,7 @@ Route::prefix('api')->group(function () {
     Route::put('/dashboard/master/atualizar/{id}', [MasterController::class, 'atualizarFuncionario'])->name('dashboard.master.atualizar');
     Route::get('/dashboard/master/editar/{id}', [MasterController::class, 'showEditarForm'])->name('dashboard.master.funcionarios.editar');
     Route::delete('/dashboard/master/deletar/{id}', [MasterController::class, 'deletarFuncionario'])->name('dashboard.master.funcionarios.deletar');
+    Route::get('/dashboard/master/funcionarios', [MasterController::class, 'viewListarFuncionarios'])->name('dashboard.master.funcionarios.listar');
     // Route::delete('/funcionarios/deletar/{id}', [MasterioController::class, 'deletarFuncionario'])->name('funcionarios.deletar');
 
 

@@ -35,7 +35,7 @@
         @include('components.header', [
     'sectionTitle' => 'Secretaria',
     'pageTitle' => 'Dashboard',
-    'logoUrl' => $logoUrl
+    'logoUrl' => route('dashboard.professor')
 ])
 
         

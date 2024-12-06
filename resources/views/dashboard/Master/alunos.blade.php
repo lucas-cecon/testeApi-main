@@ -120,12 +120,12 @@
                                         <td class="border border-gray-300 px-2 py-2">{{ $aluno->email }}</td>
                                         </td>
                                         <td class="border border-gray-300 px-2 py-2">
-                                           <a href="{{ route('dashboard.master.alunos.editar', $aluno->id_aluno) }}" class="btn text-blue-500 btn-primary">Editar</a>
-                                <a href="{{ route('dashboard.master.alunos.detalhes', $aluno->id_aluno) }}" class="btn text-blue-500 btn-secondary">Visualizar</a>
+                                           <a href="{{ route('dashboard.master.alunos.editar', $aluno->id_aluno) }}" class="btn text-blue-500 btn-primary text-decoration-line: underline">Editar</a>
+                                <a href="{{ route('dashboard.master.alunos.detalhes', $aluno->id_aluno) }}" class="btn text-blue-500 btn-secondary text-decoration-line: underline">Visualizar</a>
                                 <form action="{{ route('dashboard.master.alunos.deletar', $aluno->id_aluno) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn text-red-500 btn-danger" onclick="return confirm('Tem certeza que deseja excluir este aluno?');">Excluir</button>
+                                    <button type="submit" class="btn text-red-500 btn-danger text-decoration-line: underline" onclick="return confirm('Tem certeza que deseja excluir este aluno?');">Excluir</button>
                                 </form>
                                         </td>
             

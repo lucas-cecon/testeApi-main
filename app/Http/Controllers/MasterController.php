@@ -170,6 +170,32 @@ class MasterController extends Controller
         return view('dashboard.master.editar_funcionario', compact('funcionario', 'cargos', 'horarios'));
     }
 
+    public function viewListarFuncionarios(Request $request)
+    {
+        $query = Funcionario::with(['cargo', 'horario']);
+    
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nome', 'LIKE', "%$search%")
+                  ->orWhere('cpf', 'LIKE', "%$search%");
+        }
+    
+        $funcionarios = $query->get();
+    
+        // Substitui o ID pelos objetos relacionados de cargo e horário
+        foreach ($funcionarios as $funcionario) {
+            $funcionario->cargo = CargoFuncionario::find($funcionario->cargo);
+            $funcionario->horario = BancoDeHoras::find($funcionario->horario);
+        }
+
+        // Se a requisição espera JSON, retorna os funcionários em formato JSON
+        if ($request->expectsJson()) {
+            return response()->json($funcionarios, 200);
+        }
+
+        return view('dashboard.master.funcionario', compact('funcionarios'));
+    }
+
     public function index()
     {
         // Obtém o ID do funcionário logado (usando session ou Auth)
