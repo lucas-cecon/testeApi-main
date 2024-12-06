@@ -151,7 +151,7 @@ class MasterController extends Controller
                 return response()->json(['message' => 'Funcionário excluído com sucesso!'], 200);
             }
 
-            return redirect()->route('funcionarios.listar')->with('success', 'Funcionário excluído com sucesso!');
+            return redirect()->route('dashboard.master.funcionario')->with('success', 'Funcionário excluído com sucesso!');
         } catch (\Exception $e) {
             // Se a requisição espera JSON, retorna um erro em formato JSON
             if (request()->expectsJson()) {

@@ -106,11 +106,11 @@
                     <!-- Confirmar -->
                     <div class="flex flex-col md:col"> <!-- Ocupa 2 colunas em telas maiores -->
                         <label class="font-bold mb-2">‎ </label>
-                        <button type="submit" class=" btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Cadastrar funcionário:</button> <!-- Botão responsivo com w-full -->
+                        <button type="submit" class=" btn btn-primary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Cadastrar funcionário</button> <!-- Botão responsivo com w-full -->
                     </div>
                     <div class="flex flex-col md:col"> <!-- Ocupa 2 colunas em telas maiores -->
                         <label class="font-bold mb-2">‎ </label>
-                        <a href="{{ route('dashboard.master.alunos') }}"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
+                        <a href="{{ route('dashboard.master.funcionario') }}"><button type="button" class="btn btn-secondary w-full border bg-red-500 hover:bg-red-700 text-white border-red-500 p-2 rounded-md">Voltar</button></a> <!-- Botão responsivo com w-full -->
                     </div>
                 </div>
             </form>
