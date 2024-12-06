@@ -79,6 +79,8 @@ class RHController extends Controller
         // Retornando a view com os detalhes do ticket
         return view('dashboard.rh.analizar_solicitacoes', compact('ticket')); // Mantenha ou altere o nome da view conforme necessário
     }
+
+
 public function pesquisarAlunos(Request $request)
 {
     $request->validate([
@@ -99,6 +101,20 @@ public function pesquisarAlunos(Request $request)
     return response()->json([]);
 }
 
+public function pesquisaluno(Request $request)
+    {
+        // Obter o valor da busca
+        $search = $request->input('search');
 
+        // Consultar os alunos, aplicando filtro se houver busca
+        $alunos = Aluno::when($search, function ($query, $search) {
+            $query->where('nome', 'like', '%' . $search . '%')
+            ->orWhere('cpf_aluno', 'LIKE', "%$search%") ;
+        })->get();
+
+
+        // Retornar a view com os alunos filtrados
+        return view('dashboard.rh.apm', compact('alunos'));
+    }
 
 }
