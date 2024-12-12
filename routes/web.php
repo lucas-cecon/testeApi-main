@@ -22,7 +22,6 @@ Route::post('/logout', [FuncionarioController::class, 'logout'])->name('funciona
 
 // Rotas protegidas pelo middleware 'verificar.token'
 Route::middleware([\App\Http\Middleware\VerificarToken::class])->group(function () {
-
     Route::get('/perfil', [FuncionarioController::class, 'perfil'])->name('perfil');
 
     // Rota para listar funcionários
@@ -63,47 +62,34 @@ Route::middleware([\App\Http\Middleware\VerificarToken::class])->group(function 
     Route::get('/dashboard/rh/apm/{id}/editar', [AlunoController::class, 'editarAluno'])->name('dashboard.rh.editar_aluno');
     Route::post('/dashboard/rh/apm/{id}', [AlunoController::class, 'atualizarAluno'])->name('dashboard.rh.atualizar_aluno');
 
-// Rotas para Diplomas
-Route::get('/dashboard/rh/diplomas', [DiplomaController::class, 'index'])->name('dashboard.rh.diplomas'); // Exibe todos os diplomas
-Route::get('/dashboard/rh/diplomas/pesquisa', [DiplomaController::class, 'index'])->name('diplomas.pesquisa'); // Pesquisa de diplomas
-Route::get('/dashboard/rh/diplomas/{id}', [DiplomaController::class, 'show'])->name('dashboard.rh.diplomas.show'); // Detalhe do diploma
-Route::get('/diplomas/visualizar/{id}', [DiplomaController::class, 'visualizar'])->name('diplomas.visualizar'); // Visualizar diploma
-Route::delete('/dashboard/rh/diplomas/remover-aluno/{id}', [DiplomaController::class, 'removerAluno'])->name('dashboard.rh.remover_aluno'); // Remover aluno
-Route::get('/dashboard/rh/diplomas/escolher', [DiplomaController::class, 'escolher'])->name('diplomas.escolher'); // Escolher diploma
-Route::post('/dashboard/rh/diplomas/associar', [DiplomaController::class, 'associar'])->name('diplomas.associar'); // Associar diploma
+    // Rotas para Diplomas
+    Route::get('/dashboard/rh/diplomas', [DiplomaController::class, 'index'])->name('dashboard.rh.diplomas'); // Exibe todos os diplomas
+    Route::get('/dashboard/rh/diplomas/pesquisa', [DiplomaController::class, 'index'])->name('diplomas.pesquisa'); // Pesquisa de diplomas
+    Route::get('/dashboard/rh/diplomas/{id}', [DiplomaController::class, 'show'])->name('dashboard.rh.diplomas.show'); // Detalhe do diploma
+    Route::get('/diplomas/visualizar/{id}', [DiplomaController::class, 'visualizar'])->name('diplomas.visualizar'); // Visualizar diploma
+    Route::delete('/dashboard/rh/diplomas/remover-aluno/{id}', [DiplomaController::class, 'removerAluno'])->name('dashboard.rh.remover_aluno'); // Remover aluno
+    Route::get('/dashboard/rh/diplomas/escolher', [DiplomaController::class, 'escolher'])->name('diplomas.escolher'); // Escolher diploma
+    Route::post('/dashboard/rh/diplomas/associar', [DiplomaController::class, 'associar'])->name('diplomas.associar'); // Associar diploma
 
-Route::get('/dashboard/rh/create', [DiplomaController::class, 'create'])->name('diplomas.create.rh');
-Route::post('/dashboard/rh/diplomas', [DiplomaController::class, 'store'])->name('diplomas.store');
-Route::post('/dashboard/rh/diplomas/{diplomaId}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
-Route::delete('/dashboard/rh/diplomas/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diplomas.remover');
-Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atualizarStatus'])->name('diplomas.atualizarStatus');
-
-
-
-
-
-
-
-
-
-
+    Route::get('/dashboard/rh/create', [DiplomaController::class, 'create'])->name('diplomas.create.rh');
+    Route::post('/dashboard/rh/diplomas', [DiplomaController::class, 'store'])->name('diplomas.store');
+    Route::post('/dashboard/rh/diplomas/{diplomaId}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diplomas.associar');
+    Route::delete('/dashboard/rh/diplomas/remover/{relacao}', [DiplomaController::class, 'removerAluno'])->name('diplomas.remover');
+    Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atualizarStatus'])->name('diplomas.atualizarStatus');
 
     // Rotas para Gestor
 
     Route::get('/index_gestor', function () {
-    return view('index_arrumado');
+        return view('index_arrumado');
     });
-
-
-
 
     Route::get('/dashboard/gestor', [GestorController::class, 'index'])->name('dashboard.gestor.index_arrumado'); // Rota do índice do gestor
     Route::get('/dashboard/gestor/pesquisa', [GestorController::class, 'index'])->name('dashboard.gestor.pedidos');
     Route::get('/dashboard/gestor/tickets', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.listar_tickets');
     Route::post('/dashboard/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('dashboard.gestor.aprovar_ticket');
     Route::post('/dashboard/gestor/tickets/rejeitar/{id}', [GestorController::class, 'rejeitarTicket'])->name('dashboard.gestor.rejeitar_ticket');
-    Route::get('/dashboard/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('dashboard.gestor.detalhar_ticket');    // Rota para detalhes do ticket
-    Route::get('/dashboard/gestor/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.pedidos_ticket'); 
+    Route::get('/dashboard/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('dashboard.gestor.detalhar_ticket'); // Rota para detalhes do ticket
+    Route::get('/dashboard/gestor/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.gestor.pedidos_ticket');
     // Rota para a lista de alunos no dashboard do gestor
     Route::get('/dashboard/gestor/alunos', [GestorController::class, 'mostrarAlunos'])->name('dashboard.gestor.alunos');
     Route::get('/dashboard/gestor/alunos/pesquisa', [GestorController::class, 'pesquisaAluno'])->name('dashboard.gestor.alunos.pesquisa');
@@ -112,8 +98,7 @@ Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atual
     Route::get('/dashboard/gestor/alunos/{id}/editar', [GestorController::class, 'showEditarAlunoForm'])->name('dashboard.gestor.alunos.editar');
     Route::put('/dashboard/gestor/alunos/{id}', [GestorController::class, 'atualizarAluno'])->name('dashboard.gestor.alunos.atualizar');
     Route::delete('/dashboard/gestor/alunos/{id}', [GestorController::class, 'deletarAluno'])->name('dashboard.gestor.alunos.deletar');
-    Route::get('/dashboard/gestor/alunos/{id}', [GestorController::class, 'showAluno'])->name('dashboard.gestor.alunos.detalhes');;
-
+    Route::get('/dashboard/gestor/alunos/{id}', [GestorController::class, 'showAluno'])->name('dashboard.gestor.alunos.detalhes');
 
     // Rota para dashboard default
     Route::get('/dashboard/default', function () {
@@ -131,9 +116,6 @@ Route::post('/diplomas/{id}/atualizar-status', [DiplomaController::class, 'atual
     // Rota para armazenar o novo aluno
     Route::post('/alunos', [AlunoController::class, 'armazenar'])->name('alunos.armazenar');
     Route::get('alunos/{id}', [AlunoController::class, 'show'])->name('alunos.show');
-
-
-
 });
 
 // Rotas da API
@@ -146,8 +128,6 @@ Route::prefix('api')->group(function () {
 
     // Rota para adicionar funcionário via API
     Route::post('/funcionarios/adicionar', [FuncionarioController::class, 'adicionarFuncionario'])->name('api.funcionarios.adicionar');
-
-    
 
     // Rota para atualizar funcionário via API
     Route::put('/funcionarios/atualizar/{id}', [FuncionarioController::class, 'atualizarFuncionario'])->name('api.funcionarios.atualizar');
@@ -178,7 +158,7 @@ Route::prefix('api')->group(function () {
     Route::post('/gestor/tickets/aprovar/{id}', [GestorController::class, 'aprovarTicket'])->name('api.gestor.aprovar_ticket');
     Route::post('/gestor/tickets/rejeitar/{id}', [GestorController::class, 'rejeitarTicket'])->name('api.gestor.rejeitar_ticket');
     Route::get('/gestor/tickets/{id}', [GestorController::class, 'detalharTicket'])->name('api.gestor.detalhar_ticket');
-    
+
     //Rotas para o Master
     Route::get('/dashboard/master', [MasterController::class, 'index'])->name('dashboard.master');
     Route::get('/dashboard/master/alunos', [MasterController::class, 'mostrarAlunos'])->name('dashboard.master.alunos');
@@ -188,10 +168,10 @@ Route::prefix('api')->group(function () {
     Route::get('/dashboard/master/alunos/{id}/editar', [MasterController::class, 'showEditarAlunoForm'])->name('dashboard.master.alunos.editar');
     Route::put('/dashboard/master/alunos/{id}', [MasterController::class, 'atualizarAluno'])->name('dashboard.master.alunos.atualizar');
     Route::delete('/dashboard/master/alunos/{id}', [MasterController::class, 'deletarAluno'])->name('dashboard.master.alunos.deletar');
-    Route::get('/dashboard/master/alunos/{id}', [MasterController::class, 'showAluno'])->name('dashboard.master.alunos.detalhes');;
-    Route::get('/dashboard/master/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.master.pedidos_ticket'); 
+    Route::get('/dashboard/master/alunos/{id}', [MasterController::class, 'showAluno'])->name('dashboard.master.alunos.detalhes');
+    Route::get('/dashboard/master/pedidos', [GestorController::class, 'listarTickets'])->name('dashboard.master.pedidos_ticket');
 
-    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.funcionario'); 
+    Route::get('/dashboard/master/listar', [MasterController::class, 'listarFuncionarios'])->name('dashboard.master.funcionario');
     Route::get('/dashboard/master/cadastrar', [MasterController::class, 'cadastrarFuncionario'])->name('dashboard.master.cadastrar');
     Route::post('/dashboard/master/adicionar', [MasterController::class, 'adicionarFuncionario'])->name('dashboard.master.funcionarios.adicionar');
     Route::put('/dashboard/master/atualizar/{id}', [MasterController::class, 'atualizarFuncionario'])->name('dashboard.master.atualizar');
@@ -200,15 +180,14 @@ Route::prefix('api')->group(function () {
     Route::get('/dashboard/master/funcionarios', [MasterController::class, 'viewListarFuncionarios'])->name('dashboard.master.funcionarios.listar');
     // Route::delete('/funcionarios/deletar/{id}', [MasterioController::class, 'deletarFuncionario'])->name('funcionarios.deletar');
 
-
     Route::get('/dashboard/master/diploma', [diplomaController::class, 'index'])->name('dashboard.master.diploma'); // Exibe todos o
-    Route::get('/dashboard/master/diploma/pesquisa', [diplomaController::class, 'index'])->name('diploma.pesquisa'); // Pesquisa de 
+    Route::get('/dashboard/master/diploma/pesquisa', [diplomaController::class, 'index'])->name('diploma.pesquisa'); // Pesquisa de
     Route::get('/dashboard/master/diploma/{id}', [DiplomaController::class, 'show'])->name('dashboard.master.diploma.show'); // Detalhe do diploma
     Route::get('/diploma/visualizar/{id}', [DiplomaController::class, 'visualizar'])->name('diploma.visualizar'); // Visualizar diploma
     Route::delete('/dashboard/master/diploma/remover-aluno/{id}', [DiplomaController::class, 'removerAluno'])->name('dashboard.master.remover_aluno'); // Remover aluno
     Route::get('/dashboard/master/diploma/escolher', [DiplomaController::class, 'escolher'])->name('diploma.escolher'); // Escolher diploma
     Route::post('/dashboard/master/diploma/associar', [DiplomaController::class, 'associar'])->name('diploma.associar'); // Associar diploma
-    
+
     Route::get('/dashboard/master/create', [DiplomaController::class, 'create'])->name('diploma.create');
     Route::post('/dashboard/master/diploma', [DiplomaController::class, 'store'])->name('diploma.store');
     Route::post('/dashboard/master/diploma/{diploma}/adicionar-aluno', [DiplomaController::class, 'associarAluno'])->name('diploma.associar');

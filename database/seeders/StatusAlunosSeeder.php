@@ -14,11 +14,6 @@ class StatusAlunosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('status_alunos')->insert([
-            ['status' => 'Em atividade'],
-            ['status' => 'Concluído'],
-            ['status' => 'Reprovado'],
-        ]);
+        DB::table('status_alunos')->insert([['status' => 'Em atividade'], ['status' => 'Concluído'], ['status' => 'Reprovado']]);
     }
 }
-

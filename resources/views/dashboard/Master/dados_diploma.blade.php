@@ -7,7 +7,7 @@
 <p><strong>Quantidade:</strong> {{ $diploma->quant_diploma }}</p>
 <p><strong>Turma:</strong> {{ $diploma->curso ? $diploma->curso->curso : 'Turma não encontrada' }}</p>
 <p><strong>Status:</strong>
-    @if($diploma->status == 1)
+    @if ($diploma->status == 1)
         Aberto
     @elseif($diploma->status == 2)
         Em andamento
@@ -19,8 +19,9 @@
 </p>
 
 <!-- Botão para atualizar o status do diploma -->
-@if($diploma->status < 3)
-    <form method="POST" action="{{ route('diplomas.atualizarStatus', $diploma->id) }}" style="display:inline;" onsubmit="return confirmUpdate();">
+@if ($diploma->status < 3)
+    <form method="POST" action="{{ route('diplomas.atualizarStatus', $diploma->id) }}" style="display:inline;"
+        onsubmit="return confirmUpdate();">
         @csrf
         <button type="submit" id="updateStatusButton">Atualizar Status</button>
     </form>
@@ -29,7 +30,7 @@
 <!-- Alunos Relacionados -->
 <h2>Alunos Relacionados</h2>
 
-@if($alunosRelacionados->isEmpty())
+@if ($alunosRelacionados->isEmpty())
     <p>Nenhum aluno associado a este diploma.</p>
 @else
     <table>
@@ -39,24 +40,28 @@
                 <th>Nome do Aluno</th>
                 <th>CPF do Aluno</th>
                 <th>RG do Aluno</th>
-                @if($diploma->status < 3) <!-- Exibe a coluna de Ações apenas se o status for menor que 3 -->
+                @if ($diploma->status < 3)
+                    <!-- Exibe a coluna de Ações apenas se o status for menor que 3 -->
                     <th>Ações</th>
                 @endif
             </tr>
         </thead>
         <tbody>
-            @foreach($alunosRelacionados as $relacao)
+            @foreach ($alunosRelacionados as $relacao)
                 <tr>
                     <td>{{ $relacao->aluno->id_aluno }}</td>
                     <td>{{ $relacao->aluno->nome }}</td>
                     <td>{{ $relacao->aluno->cpf_aluno }}</td>
                     <td>{{ $relacao->aluno->rg }}</td>
-                    @if($diploma->status < 3) <!-- Apenas exibe o botão de Remover se o status for menor que 3 -->
+                    @if ($diploma->status < 3)
+                        <!-- Apenas exibe o botão de Remover se o status for menor que 3 -->
                         <td>
-                            <form method="POST" action="{{ route('diplomas.remover', $relacao->id) }}" style="display:inline;">
+                            <form method="POST" action="{{ route('diplomas.remover', $relacao->id) }}"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Tem certeza que deseja remover este aluno do diploma?');">Remover</button>
+                                <button type="submit"
+                                    onclick="return confirm('Tem certeza que deseja remover este aluno do diploma?');">Remover</button>
                             </form>
                         </td>
                     @endif
@@ -67,7 +72,8 @@
 @endif
 
 <!-- Formulário para adicionar um aluno ao diploma -->
-@if($diploma->status < 3) <!-- Exibe o formulário apenas se o status for menor que 3 -->
+@if ($diploma->status < 3)
+    <!-- Exibe o formulário apenas se o status for menor que 3 -->
     <h2>Adicionar Aluno ao Diploma</h2>
     <form method="POST" action="{{ route('diplomas.associar', $diploma->id) }}">
         @csrf
@@ -92,7 +98,7 @@
 
 <!-- Script para confirmar a atualização do status -->
 <script>
-function confirmUpdate() {
-    return confirm('Tem certeza que deseja mudar o status deste diploma?');
-}
+    function confirmUpdate() {
+        return confirm('Tem certeza que deseja mudar o status deste diploma?');
+    }
 </script>

@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-
         Schema::create('cargo_funcionarios', function (Blueprint $table) {
             $table->id();
             $table->string('descricao');
@@ -27,7 +25,7 @@ return new class extends Migration
         });
 
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->id('ID_funcionario');  // Chave primária é 'ID_funcionario'
+            $table->id('ID_funcionario'); // Chave primária é 'ID_funcionario'
             $table->string('nome');
             $table->string('cpf', 11)->unique();
             $table->string('nif', 9);
@@ -39,7 +37,7 @@ return new class extends Migration
             $table->foreign('horario')->references('id')->on('banco_de_horas')->onDelete('cascade');
             $table->timestamps();
         });
-        
+
         //
 
         Schema::create('status_ticket', function (Blueprint $table) {
@@ -56,14 +54,14 @@ return new class extends Migration
             $table->string('descricao')->nullable();
             $table->unsignedBigInteger('status_ticket');
             $table->date('data_inicio')->nullable();
-            $table->date('data_fim')->nullable();            
+            $table->date('data_fim')->nullable();
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreign('ID_funcionario')->references('ID_funcionario')->on('funcionarios');  // Corrigido para referenciar 'ID_funcionario'
-            $table->foreign('gerente_ID')->references('ID_funcionario')->on('funcionarios');  // Corrigido para referenciar 'ID_funcionario'
-            $table->foreign('horario_antigo')->references('id')->on('banco_de_horas');  // Referencia a tabela banco_de_horas
-            $table->foreign('horario_novo')->references('id')->on('banco_de_horas');  // Referencia a tabela banco_de_horas
+            $table->foreign('ID_funcionario')->references('ID_funcionario')->on('funcionarios'); // Corrigido para referenciar 'ID_funcionario'
+            $table->foreign('gerente_ID')->references('ID_funcionario')->on('funcionarios'); // Corrigido para referenciar 'ID_funcionario'
+            $table->foreign('horario_antigo')->references('id')->on('banco_de_horas'); // Referencia a tabela banco_de_horas
+            $table->foreign('horario_novo')->references('id')->on('banco_de_horas'); // Referencia a tabela banco_de_horas
             $table->foreign('status_ticket')->references('id')->on('status_ticket');
         });
 
@@ -96,18 +94,17 @@ return new class extends Migration
             $table->string('email');
             $table->unsignedBigInteger('apm_status');
             $table->timestamps();
-        
+
             // Foreign Keys
             $table->foreign('curso')->references('id')->on('cursos')->onDelete('cascade');
             $table->foreign('status_aluno')->references('id')->on('status_alunos')->onDelete('cascade');
             $table->foreign('apm_status')->references('id')->on('apm_status')->onDelete('cascade');
-            
+
             // Optional: Add indexes for faster queries if needed
             $table->index('cpf_aluno');
             $table->index('rg');
             $table->index('email');
         });
-
 
         Schema::create('status_diploma', function (Blueprint $table) {
             $table->id(); // Cria a coluna 'id' como chave primária
@@ -131,7 +128,6 @@ return new class extends Migration
             $table->foreignId('diploma')->constrained('diploma', 'id'); // Chave estrangeira para diploma
             $table->timestamps();
         });
-
     }
 
     /**
@@ -145,7 +141,7 @@ return new class extends Migration
         Schema::dropIfExists('controle_de_ponto_ticket');
         Schema::dropIfExists('status_ticket');
         Schema::dropIfExists('tabela_alunos');
-        Schema::dropIfExists('funcionarios'); 
+        Schema::dropIfExists('funcionarios');
         Schema::dropIfExists('banco_de_horas');
         Schema::dropIfExists('cargo_funcionarios');
         Schema::dropIfExists('status_alunos');

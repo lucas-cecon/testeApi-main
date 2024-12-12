@@ -1,6 +1,6 @@
 @php
     $route = '';
-    switch($cargo) {
+    switch ($cargo) {
         case 1:
             $route = route('dashboard.rh');
             break;
@@ -20,6 +20,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
+
 <body class="bg-gray-100">
     <div class="container">
         <h1>Perfil do Funcionário</h1>
@@ -47,4 +49,5 @@
         </a>
     </div>
 </body>
+
 </html>

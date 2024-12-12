@@ -19,7 +19,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Troca de turno para melhor encaixe no cronograma.',
                 'status_ticket' => 1,
                 'data_inicio' => Carbon::create(2024, 10, 1),
-                'data_fim' => Carbon::create(2024, 10, 15)
+                'data_fim' => Carbon::create(2024, 10, 15),
             ],
             [
                 'ID_funcionario' => 7,
@@ -29,7 +29,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para o turno da tarde devido a novas responsabilidades.',
                 'status_ticket' => 2,
                 'data_inicio' => Carbon::create(2024, 11, 1),
-                'data_fim' => Carbon::create(2024, 11, 10)
+                'data_fim' => Carbon::create(2024, 11, 10),
             ],
             [
                 'ID_funcionario' => 8,
@@ -39,7 +39,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Necessidade de horário mais flexível.',
                 'status_ticket' => 3,
                 'data_inicio' => Carbon::create(2024, 11, 5),
-                'data_fim' => Carbon::create(2024, 11, 20)
+                'data_fim' => Carbon::create(2024, 11, 20),
             ],
             [
                 'ID_funcionario' => 9,
@@ -49,7 +49,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 4,
                 'data_inicio' => Carbon::create(2024, 12, 1),
-                'data_fim' => Carbon::create(2024, 12, 15)
+                'data_fim' => Carbon::create(2024, 12, 15),
             ],
             [
                 'ID_funcionario' => 6,
@@ -59,7 +59,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 1,
                 'data_inicio' => Carbon::create(2024, 12, 10),
-                'data_fim' => Carbon::create(2024, 12, 20)
+                'data_fim' => Carbon::create(2024, 12, 20),
             ],
             [
                 'ID_funcionario' => 7,
@@ -69,7 +69,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 2,
                 'data_inicio' => Carbon::create(2025, 1, 5),
-                'data_fim' => Carbon::create(2025, 1, 20)
+                'data_fim' => Carbon::create(2025, 1, 20),
             ],
             [
                 'ID_funcionario' => 8,
@@ -79,7 +79,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 3,
                 'data_inicio' => Carbon::create(2025, 1, 15),
-                'data_fim' => Carbon::create(2025, 1, 25)
+                'data_fim' => Carbon::create(2025, 1, 25),
             ],
             [
                 'ID_funcionario' => 9,
@@ -89,7 +89,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 4,
                 'data_inicio' => Carbon::create(2025, 2, 1),
-                'data_fim' => Carbon::create(2025, 2, 15)
+                'data_fim' => Carbon::create(2025, 2, 15),
             ],
             [
                 'ID_funcionario' => 6,
@@ -99,7 +99,7 @@ class ControleDePontoTicketSeeder extends Seeder
                 'descricao' => 'Mudança para adequação de projetos.',
                 'status_ticket' => 2,
                 'data_inicio' => Carbon::create(2025, 2, 10),
-                'data_fim' => Carbon::create(2025, 2, 25)
+                'data_fim' => Carbon::create(2025, 2, 25),
             ],
         ]);
     }

@@ -11,11 +11,8 @@ class ControleDiploma extends Model
 
     protected $table = 'controle_diploma'; // Nome da tabela
 
-        // Campos permitidos para atribuição em massa
-        protected $fillable = [
-            'aluno_id',
-            'diploma',
-        ];
+    // Campos permitidos para atribuição em massa
+    protected $fillable = ['aluno_id', 'diploma'];
 
     // Relacionamento com o modelo Aluno
     public function aluno()
@@ -28,6 +25,4 @@ class ControleDiploma extends Model
     {
         return $this->belongsTo(Diploma::class, 'diploma', 'id'); // Ajuste conforme necessário
     }
-    
 }
-

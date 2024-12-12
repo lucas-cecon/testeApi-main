@@ -5,17 +5,17 @@
         <label for="diploma_id">Selecionar Diploma:</label>
         <select name="diploma_id" id="diploma_id" required>
             <option value="">Selecione um Diploma</option>
-            @foreach($diplomas as $diploma)
+            @foreach ($diplomas as $diploma)
                 <option value="{{ $diploma->id }}">{{ $diploma->titulo }}</option>
             @endforeach
         </select>
     </div>
-    
+
     <div>
         <label for="aluno_id">Selecionar Aluno:</label>
         <select name="aluno_id" id="aluno_id" required>
             <option value="">Selecione um Aluno</option>
-            @foreach($alunos as $aluno)
+            @foreach ($alunos as $aluno)
                 <option value="{{ $aluno->id_aluno }}">{{ $aluno->nome }}</option>
             @endforeach
         </select>

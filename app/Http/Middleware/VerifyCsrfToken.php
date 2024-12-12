@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/api/consulta',  // Adicione a sua rota aqui
+        '/api/consulta', // Adicione a sua rota aqui
     ];
 }

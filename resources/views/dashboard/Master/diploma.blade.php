@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,22 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
+
 <body class="font-inter bg-gray-100">
     <div class="flex flex-col items-center min-h-screen bg-gray-100 relative">
         @include('components.header', [
             'sectionTitle' => 'Secretaria',
             'pageTitle' => 'Diploma',
-            'logoUrl' => route('dashboard.master') // Defina a URL desejada
+            'logoUrl' => route('dashboard.master'), // Defina a URL desejada
         ])
 
         <!-- Botões de Ação -->
         <div class="flex space-x-4 mt-4">
             <a href="{{ route('diploma.create.rh') }}">
-                <button class="new-order-btn flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 mr-2">
+                <button
+                    class="new-order-btn flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="h-4 w-4 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     Criar Novo Diploma
@@ -28,7 +32,8 @@
             </a>
 
             <a href="{{ route('dashboard.master') }}">
-                <button class="new-order-btn text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2">
+                <button
+                    class="new-order-btn text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2">
                     Voltar
                 </button>
             </a>
@@ -41,22 +46,18 @@
                     @if (!empty($error))
                         <div class="bg-red-500 text-white p-4 mb-4">{{ $error }}</div>
                     @else
-                        <form method="GET" action="{{ route('diploma.pesquisa') }}" id="filterForm" class="flex flex-col md:flex-row items-center justify-center mb-6">
-                            <input 
-                                type="text" 
-                                name="search" 
-                                class="block w-full md:w-1/3 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                placeholder="Buscar por Título do Diploma, Nome do Aluno, CPF ou RG" 
-                                value="{{ request('search') }}"
-                            />
+                        <form method="GET" action="{{ route('diploma.pesquisa') }}" id="filterForm"
+                            class="flex flex-col md:flex-row items-center justify-center mb-6">
+                            <input type="text" name="search"
+                                class="block w-full md:w-1/3 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Buscar por Título do Diploma, Nome do Aluno, CPF ou RG"
+                                value="{{ request('search') }}" />
                             <div class="flex gap-2 mt-4 md:mt-0 md:ml-4">
-                                <button 
-                                    type="submit" 
+                                <button type="submit"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
                                     Filtrar
                                 </button>
-                                <button 
-                                    type="button" 
+                                <button type="button"
                                     class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2"
                                     onclick="document.getElementById('filterForm').reset(); window.location.href='{{ route('diploma.pesquisa') }}';">
                                     Limpar
@@ -79,7 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700 text-sm">
-                                @foreach($diploma as $diploma)
+                                @foreach ($diploma as $diploma)
                                     <tr class="border-b">
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->id }}</td>
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->titulo }}</td>
@@ -87,7 +88,7 @@
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->quant_diploma }}</td>
                                         <td class="border border-gray-300 px-4 py-2">{{ $diploma->curso->curso }}</td>
                                         <td class="border border-gray-300 px-4 py-2">
-                                            @if($diploma->status == 1)
+                                            @if ($diploma->status == 1)
                                                 Aberto
                                             @elseif($diploma->status == 2)
                                                 Em andamento
@@ -98,7 +99,8 @@
                                             @endif
                                         </td>
                                         <td class="border border-gray-300 px-4 py-2">
-                                            <a href="{{ route('dashboard.rh.diploma.show', $diploma->id) }}" class="text-blue-600 hover:underline">
+                                            <a href="{{ route('dashboard.rh.diploma.show', $diploma->id) }}"
+                                                class="text-blue-600 hover:underline">
                                                 Visualizar
                                             </a>
                                         </td>
@@ -112,4 +114,5 @@
         </div>
     </div>
 </body>
+
 </html>

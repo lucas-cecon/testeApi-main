@@ -2,7 +2,8 @@
     <!-- Logo SENAI e Secretaria -->
     <div class="flex items-center">
         <!-- Logo SENAI -->
-        <a href="{{ $logoUrl ?? url('') }}"><img src="{{ asset('assets/img/senai.svg') }}" alt="SENAI Logo" class="senai-logo"></a>
+        <a href="{{ $logoUrl ?? url('') }}"><img src="{{ asset('assets/img/senai.svg') }}" alt="SENAI Logo"
+                class="senai-logo"></a>
         <!-- Texto "Secretaria" -->
         <span class="secretaria-text">{{ $sectionTitle ?? 'Secretaria' }}</span>
     </div>

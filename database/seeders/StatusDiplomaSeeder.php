@@ -9,11 +9,6 @@ class StatusDiplomaSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('status_diploma')->insert([
-            ['status' => 'Aberto'],
-            ['status' => 'Em andamento'],
-            ['status' => 'Concluido'],
-        ]);
+        DB::table('status_diploma')->insert([['status' => 'Aberto'], ['status' => 'Em andamento'], ['status' => 'Concluido']]);
     }
 }
-

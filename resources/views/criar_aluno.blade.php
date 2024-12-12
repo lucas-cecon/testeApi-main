@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Novo Aluno</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
+
 <body>
     <h1>Criar Novo Aluno</h1>
     <form action="{{ route('alunos.armazenar') }}" method="POST">
         @csrf
-        
+
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
         <br>
@@ -33,7 +35,7 @@
                 <option value="{{ $curso->id }}">{{ $curso->curso }}</option>
             @endforeach
         </select>
-        
+
         <br>
 
         <label for="status_aluno_id">Status:</label>
@@ -59,4 +61,5 @@
         <button type="submit">Criar Aluno</button>
     </form>
 </body>
+
 </html>

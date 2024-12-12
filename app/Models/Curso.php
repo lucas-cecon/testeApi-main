@@ -23,5 +23,3 @@ class Curso extends Model
         return $this->hasMany(Aluno::class, 'curso', 'id');
     }
 }
-
-

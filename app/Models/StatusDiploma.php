@@ -12,6 +12,6 @@ class StatusDiploma extends Model
     protected $table = 'status_diploma'; // Nome da tabela no banco de dados
 
     protected $fillable = [
-        'status' // Atributo que pode ser preenchido em massa
+        'status', // Atributo que pode ser preenchido em massa
     ];
 }

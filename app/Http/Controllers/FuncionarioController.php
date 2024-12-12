@@ -22,44 +22,45 @@ class FuncionarioController extends Controller
         // Validação básica do login
         $validatedData = $request->validate([
             'cpf_nif' => 'required|string',
-            'senha' => 'required|string'
+            'senha' => 'required|string',
         ]);
-    
+
         // Verifica se o funcionário existe com base no CPF ou NIF
-        $funcionario = Funcionario::where('cpf', $request->input('cpf_nif'))
-                                  ->orWhere('nif', $request->input('cpf_nif'))
-                                  ->first();
-    
+        $funcionario = Funcionario::where('cpf', $request->input('cpf_nif'))->orWhere('nif', $request->input('cpf_nif'))->first();
+
         // Verifica se o funcionário foi encontrado e se a senha está correta
         if ($funcionario && Hash::check($request->input('senha'), $funcionario->senha)) {
             // Encontrar o cargo e o horário usando apenas os IDs
             $cargo = CargoFuncionario::find($funcionario->cargo); // Encontrar o cargo
             $horario = BancoDeHoras::find($funcionario->horario); // Encontrar o horário
-    
+
             // Gera o token (simulação, substitua pela lógica real de geração de token)
             $token = bin2hex(random_bytes(16));
-    
+
             // Armazena o token no banco de dados
             $funcionario->token = $token;
             $funcionario->save(); // Salva o token no banco
-    
+
             // Retorna um JSON se a requisição for de API
             if ($request->expectsJson()) {
-                return response()->json([
-                    'message' => 'Login realizado com sucesso',
-                    'funcionario' => $funcionario,
-                    'token' => $token
-                ], 200);
+                return response()->json(
+                    [
+                        'message' => 'Login realizado com sucesso',
+                        'funcionario' => $funcionario,
+                        'token' => $token,
+                    ],
+                    200,
+                );
             }
-    
+
             // Armazena o token, nome, cargo, e outros dados na sessão
             session([
                 'token' => $token,
                 'nome' => $funcionario->nome,
                 'cargo' => $cargo->descricao, // Armazena a descrição do cargo na sessão
-                'id_funcionario' => $funcionario->ID_funcionario
+                'id_funcionario' => $funcionario->ID_funcionario,
             ]);
-    
+
             // Redireciona com base no cargo do funcionário
             switch ($cargo->descricao) {
                 case 'Master':
@@ -86,24 +87,20 @@ class FuncionarioController extends Controller
     {
         // Obtém o ID do funcionário logado da sessão
         $idFuncionario = session('id_funcionario'); // Ajuste conforme o nome exato da sessão
-    
+
         // Obtém o funcionário logado com o cargo e horário usando o ID da sessão
         $funcionario = Funcionario::with(['cargo', 'horario'])
             ->where('id_funcionario', $idFuncionario)
             ->first();
-    
+
         // Verifica se o funcionário foi encontrado
         if (!$funcionario) {
             return redirect()->route('funcionarios.listar')->with('error', 'Funcionário não encontrado.');
         }
-    
+
         // Retorna a view de perfil com as informações do funcionário
         return view('geral.profile', compact('funcionario'));
     }
-    
-
-    
-    
 
     public function logout(Request $request)
     {
@@ -134,15 +131,14 @@ class FuncionarioController extends Controller
     public function viewListarFuncionarios(Request $request)
     {
         $query = Funcionario::with(['cargo', 'horario']);
-    
+
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where('nome', 'LIKE', "%$search%")
-                  ->orWhere('cpf', 'LIKE', "%$search%");
+            $query->where('nome', 'LIKE', "%$search%")->orWhere('cpf', 'LIKE', "%$search%");
         }
-    
+
         $funcionarios = $query->get();
-    
+
         // Substitui o ID pelos objetos relacionados de cargo e horário
         foreach ($funcionarios as $funcionario) {
             $funcionario->cargo = CargoFuncionario::find($funcionario->cargo);
@@ -175,26 +171,29 @@ class FuncionarioController extends Controller
     public function adicionarFuncionario(Request $request)
     {
         // Validação dos campos
-        $validatedData = $request->validate([
-            'nome' => 'required|string|max:255',
-            'cpf' => 'required|string|size:11|unique:funcionarios,cpf', // CPF único e com 11 dígitos
-            'nif' => 'required|string|max:9', // NIF com no máximo 9 caracteres
-            'cargo' => 'required|exists:cargo_funcionarios,id', // O cargo deve existir na tabela cargo_funcionarios
-            'horario' => 'required|exists:banco_de_horas,id', // O horário deve existir na tabela banco_de_horas
-            'senha' => 'required|string|min:6|confirmed', // Senha confirmada
-        ], [
-            'cpf.unique' => 'O CPF já está cadastrado.',
-            'nif.max' => 'O NIF deve ter no máximo 10 caracteres.',
-            'senha.confirmed' => 'A confirmação de senha não corresponde.',
-            'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'nome' => 'required|string|max:255',
+                'cpf' => 'required|string|size:11|unique:funcionarios,cpf', // CPF único e com 11 dígitos
+                'nif' => 'required|string|max:9', // NIF com no máximo 9 caracteres
+                'cargo' => 'required|exists:cargo_funcionarios,id', // O cargo deve existir na tabela cargo_funcionarios
+                'horario' => 'required|exists:banco_de_horas,id', // O horário deve existir na tabela banco_de_horas
+                'senha' => 'required|string|min:6|confirmed', // Senha confirmada
+            ],
+            [
+                'cpf.unique' => 'O CPF já está cadastrado.',
+                'nif.max' => 'O NIF deve ter no máximo 10 caracteres.',
+                'senha.confirmed' => 'A confirmação de senha não corresponde.',
+                'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
+            ],
+        );
 
         try {
             $funcionario = new Funcionario();
             $funcionario->nome = $request->input('nome');
             $funcionario->cpf = $request->input('cpf');
             $funcionario->nif = $request->input('nif');
-            $funcionario->cargo = $request->input('cargo');  // Usando 'cargo'
+            $funcionario->cargo = $request->input('cargo'); // Usando 'cargo'
             $funcionario->horario = $request->input('horario'); // Usando 'horario'
             $funcionario->senha = bcrypt($request->input('senha'));
             $funcionario->save();
@@ -218,22 +217,25 @@ class FuncionarioController extends Controller
     public function atualizarFuncionario(Request $request, $id)
     {
         // Validação dos campos
-        $validatedData = $request->validate([
-            'nome' => 'required|string|max:255',
-            'cpf' => 'required|string|size:11|unique:funcionarios,cpf,' . $id . ',ID_funcionario', // CPF único, exceto para o próprio funcionário
-            'nif' => 'required|string|max:9', // NIF com no máximo 9 caracteres
-            'cargo' => 'required|exists:cargo_funcionarios,id', // O cargo deve existir na tabela cargo_funcionarios
-            'horario' => 'required|exists:banco_de_horas,id', // O horário deve existir na tabela banco_de_horas
-            'senha' => 'nullable|string|min:6|confirmed', // Senha confirmada, mas opcional
-        ], [
-            'cpf.unique' => 'O CPF já está cadastrado.',
-            'nif.max' => 'O NIF deve ter no máximo 9 caracteres.',
-            'senha.confirmed' => 'A confirmação de senha não corresponde.',
-            'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'nome' => 'required|string|max:255',
+                'cpf' => 'required|string|size:11|unique:funcionarios,cpf,' . $id . ',ID_funcionario', // CPF único, exceto para o próprio funcionário
+                'nif' => 'required|string|max:9', // NIF com no máximo 9 caracteres
+                'cargo' => 'required|exists:cargo_funcionarios,id', // O cargo deve existir na tabela cargo_funcionarios
+                'horario' => 'required|exists:banco_de_horas,id', // O horário deve existir na tabela banco_de_horas
+                'senha' => 'nullable|string|min:6|confirmed', // Senha confirmada, mas opcional
+            ],
+            [
+                'cpf.unique' => 'O CPF já está cadastrado.',
+                'nif.max' => 'O NIF deve ter no máximo 9 caracteres.',
+                'senha.confirmed' => 'A confirmação de senha não corresponde.',
+                'senha.min' => 'A senha deve ter no mínimo 6 caracteres.',
+            ],
+        );
 
         try {
-            $funcionario = Funcionario::findOrFail($id);  // Garante que está usando o id correto
+            $funcionario = Funcionario::findOrFail($id); // Garante que está usando o id correto
             $funcionario->nome = $request->input('nome');
             $funcionario->cpf = $request->input('cpf');
             $funcionario->nif = $request->input('nif');
@@ -288,7 +290,9 @@ class FuncionarioController extends Controller
     public function consultarFuncionarioPorCPF($cpf)
     {
         try {
-            $funcionario = Funcionario::where('cpf', $cpf)->with(['cargo', 'horario'])->firstOrFail();
+            $funcionario = Funcionario::where('cpf', $cpf)
+                ->with(['cargo', 'horario'])
+                ->firstOrFail();
             return response()->json($funcionario, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao consultar funcionário', 'error' => $e->getMessage()], 404);

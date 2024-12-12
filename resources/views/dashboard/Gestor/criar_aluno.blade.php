@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Novo Aluno</title>
 </head>
+
 <body>
     <h1>Criar Novo Aluno</h1>
     <form action="{{ route('dashboard.gestor.alunos.armazenar') }}" method="POST">
         @csrf
-        
+
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
         <br>
@@ -32,7 +34,7 @@
                 <option value="{{ $curso->id }}">{{ $curso->curso }}</option>
             @endforeach
         </select>
-        
+
         <br>
 
         <label for="status_aluno_id">Status:</label>
@@ -61,4 +63,5 @@
     <a href="{{ route('dashboard.gestor.alunos') }}" class="btn btn-primary" style="margin-top: 20px;">Voltar</a>
 
 </body>
+
 </html>

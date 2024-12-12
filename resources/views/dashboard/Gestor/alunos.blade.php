@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Adicione seu CSS aqui -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
+
 <body>
     <div class="container">
         <h1>Lista de Alunos</h1>
@@ -36,10 +38,13 @@
         @endif
 
         <!-- Formulário de busca -->
-        <form method="GET" action="{{ route('dashboard.gestor.alunos.pesquisa') }}" id="searchForm" style="margin-bottom: 20px;">
-            <input type="text" id="searchInput" name="search" placeholder="Buscar por nome" value="{{ request()->input('search') }}">
+        <form method="GET" action="{{ route('dashboard.gestor.alunos.pesquisa') }}" id="searchForm"
+            style="margin-bottom: 20px;">
+            <input type="text" id="searchInput" name="search" placeholder="Buscar por nome"
+                value="{{ request()->input('search') }}">
             <button type="submit">Buscar</button>
-            <button type="button" onclick="document.getElementById('searchInput').value = ''; document.getElementById('searchForm').submit();">Limpar</button>
+            <button type="button"
+                onclick="document.getElementById('searchInput').value = ''; document.getElementById('searchForm').submit();">Limpar</button>
         </form>
 
         <a href="{{ route('dashboard.gestor.alunos.criar') }}" class="btn btn-success">Criar Novo Aluno</a>
@@ -75,12 +80,16 @@
                             <td>{{ $aluno->apmStatus->status ?? 'N/A' }}</td>
                             <td>{{ $aluno->email }}</td>
                             <td>
-                                <a href="{{ route('dashboard.gestor.alunos.editar', $aluno->id_aluno) }}" class="btn btn-primary">Editar</a>
-                                <a href="{{ route('dashboard.gestor.alunos.detalhes', $aluno->id_aluno) }}" class="btn btn-secondary">Visualizar</a>
-                                <form action="{{ route('dashboard.gestor.alunos.deletar', $aluno->id_aluno) }}" method="POST" style="display:inline;">
+                                <a href="{{ route('dashboard.gestor.alunos.editar', $aluno->id_aluno) }}"
+                                    class="btn btn-primary">Editar</a>
+                                <a href="{{ route('dashboard.gestor.alunos.detalhes', $aluno->id_aluno) }}"
+                                    class="btn btn-secondary">Visualizar</a>
+                                <form action="{{ route('dashboard.gestor.alunos.deletar', $aluno->id_aluno) }}"
+                                    method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este aluno?');">Excluir</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Tem certeza que deseja excluir este aluno?');">Excluir</button>
                                 </form>
                             </td>
                         </tr>
@@ -92,4 +101,5 @@
         <a href="{{ route('dashboard.gestor') }}" class="btn btn-primary">Voltar para o Dashboard</a>
     </div>
 </body>
+
 </html>

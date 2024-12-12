@@ -19,8 +19,7 @@ class VerificarToken
         if (!$request->session()->has('token')) {
             return redirect()->route('login')->with('error', 'Você deve estar logado para acessar esta página.');
         }
-    
+
         return $next($request);
     }
-    
 }

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\BancoDeHoras;
 use App\Models\Funcionario;
 
-
 class ProfessorController extends Controller
 {
     public function index()
@@ -19,9 +18,9 @@ class ProfessorController extends Controller
 
         // Filtra os tickets com base no funcionário logado, garantindo o carregamento correto de todos os relacionamentos
         $tickets = ControleDePontoTicket::where('ID_funcionario', $funcionarioId)
-                    ->with(['horarioAntigo', 'horarioNovo', 'statusTicket'])
-                    ->orderBy('created_at', 'desc')
-                    ->get();
+            ->with(['horarioAntigo', 'horarioNovo', 'statusTicket'])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         // Retorna a view com os tickets filtrados
         return view('dashboard.professor.index', compact('tickets'));
@@ -41,12 +40,10 @@ class ProfessorController extends Controller
         // Obtém o funcionário logado
         $funcionarioId = session('id_funcionario');
         $professor = Funcionario::find($funcionarioId);
-    
+
         // Busca o último ticket do funcionário para pegar o último horário novo
-        $ultimoTicket = ControleDePontoTicket::where('ID_funcionario', $funcionarioId)
-                        ->orderBy('created_at', 'desc')
-                        ->first();
-    
+        $ultimoTicket = ControleDePontoTicket::where('ID_funcionario', $funcionarioId)->orderBy('created_at', 'desc')->first();
+
         // Se houver um último ticket, use o último horário novo como horário antigo
         if ($ultimoTicket) {
             $horarioAtual = BancoDeHoras::find($ultimoTicket->horario_novo);
@@ -54,15 +51,15 @@ class ProfessorController extends Controller
             // Se não houver, usa o horário atual do professor
             $horarioAtual = BancoDeHoras::find($professor->horario);
         }
-    
+
         // Recupera todos os horários disponíveis para troca e gestores
         $horarios = BancoDeHoras::all();
         $gestores = Funcionario::where('cargo', 3)->get();
-    
+
         return view('dashboard.professor.create_ticket', [
             'horarioAtual' => $horarioAtual,
             'horarios' => $horarios,
-            'gestores' => $gestores
+            'gestores' => $gestores,
         ]);
     }
 
@@ -70,12 +67,12 @@ class ProfessorController extends Controller
     {
         // Obtém o ID do funcionário logado pela sessão
         $funcionarioId = session('id_funcionario');
-        
+
         // Verifica se o funcionário está logado
         if (!$funcionarioId) {
             return redirect()->route('login')->with('error', 'Você precisa estar logado para criar um ticket.');
         }
-    
+
         // Validação dos dados do formulário
         $request->validate([
             'horario_novo' => 'required|exists:banco_de_horas,id',
@@ -84,15 +81,13 @@ class ProfessorController extends Controller
             'data_inicio' => 'required|date', // Valida data_inicio como obrigatório
             'data_fim' => 'nullable|date|after_or_equal:data_inicio', // data_fim opcional e deve ser após data_inicio
         ]);
-    
+
         // Busca o último ticket do funcionário para definir o horário antigo
-        $ultimoTicket = ControleDePontoTicket::where('ID_funcionario', $funcionarioId)
-                        ->orderBy('created_at', 'desc')
-                        ->first();
-    
+        $ultimoTicket = ControleDePontoTicket::where('ID_funcionario', $funcionarioId)->orderBy('created_at', 'desc')->first();
+
         // Define o horário antigo com base no último ticket ou no valor enviado no formulário
         $horarioAntigo = $ultimoTicket ? $ultimoTicket->horario_novo : $request->input('horario_antigo');
-    
+
         // Criação do novo ticket com data_inicio e data_fim
         ControleDePontoTicket::create([
             'ID_funcionario' => $funcionarioId,
@@ -102,14 +97,10 @@ class ProfessorController extends Controller
             'descricao' => $request->input('descricao'),
             'status_ticket' => 1, // Status 1 = "aberto"
             'data_inicio' => $request->input('data_inicio'), // Define data de início
-            'data_fim' => $request->input('data_fim') // Define data de fim, caso tenha sido preenchida
+            'data_fim' => $request->input('data_fim'), // Define data de fim, caso tenha sido preenchida
         ]);
-    
+
         // Redireciona com uma mensagem de sucesso
         return redirect()->route('dashboard.professor')->with('success', 'Solicitação criada com sucesso!');
     }
-    
-    
-    
-    
 }

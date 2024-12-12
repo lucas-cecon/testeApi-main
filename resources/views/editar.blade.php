@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Funcionário</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
 </head>
+
 <body>
     <h1>Editar Funcionário</h1>
 
@@ -18,7 +20,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif 
+    @endif
 
 
 
@@ -40,7 +42,7 @@
 
         <label for="cargo">Cargo:</label>
         <select id="cargo" name="cargo" required>
-            @foreach($cargos as $cargo)
+            @foreach ($cargos as $cargo)
                 <option value="{{ $cargo->id }}" {{ $funcionario->cargo == $cargo->id ? 'selected' : '' }}>
                     {{ $cargo->descricao }}
                 </option>
@@ -50,7 +52,7 @@
 
         <label for="horario">Horário:</label>
         <select id="horario" name="horario" required>
-            @foreach($horarios as $horario)
+            @foreach ($horarios as $horario)
                 <option value="{{ $horario->id }}" {{ $funcionario->horario == $horario->id ? 'selected' : '' }}>
                     {{ $horario->hora_inicio }} - {{ $horario->hora_fim }}
                 </option>
@@ -71,4 +73,5 @@
 
     <a href="{{ route('funcionarios.listar') }}">Voltar para lista</a>
 </body>
+
 </html>

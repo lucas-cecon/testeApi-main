@@ -12,13 +12,6 @@ class CursosSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('cursos')->insert([
-            ['curso' => 'Turma562131'],
-            ['curso' => 'Turma010423'],
-            ['curso' => 'Turma010284'],
-            ['curso' => 'Turma012311'],
-            ['curso' => 'Turma011111'],
-            ['curso' => 'Turma010393'],
-        ]);
+        DB::table('cursos')->insert([['curso' => 'Turma562131'], ['curso' => 'Turma010423'], ['curso' => 'Turma010284'], ['curso' => 'Turma012311'], ['curso' => 'Turma011111'], ['curso' => 'Turma010393']]);
     }
 }

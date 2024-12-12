@@ -16,11 +16,10 @@ class FuncionarioSeeder extends Seeder
      */
     public function run(): void
     {
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         DB::table('funcionarios')->truncate();
-        
+
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         DB::table('funcionarios')->insert([

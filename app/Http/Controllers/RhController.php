@@ -18,36 +18,33 @@ class RHController extends Controller
         return view('dashboard.rh.index');
     }
 
-        public function pedidos()
+    public function pedidos()
     {
         // Obtém o ID do funcionário logado (usando session ou Auth)
         $funcionarioId = session('id_funcionario'); // ou Auth::user()->ID_funcionario, se estiver usando Auth
 
         $tickets = ControleDePontoTicket::whereIn('status_ticket', [2, 3, 4]) // Filtrando os tickets com os status 2, 3 e 4
-        ->with(['funcionario', 'horarioAntigo', 'horarioNovo'])
-        ->get();
+            ->with(['funcionario', 'horarioAntigo', 'horarioNovo'])
+            ->get();
 
         return view('dashboard.rh.pedidos', compact('tickets'));
     }
-
 
     public function pesquisar(Request $request)
     {
         // Obter o valor de busca
         $search = $request->input('search');
-    
+
         // Consultar os tickets, aplicando filtro se houver busca
         $tickets = ControleDePontoTicket::when($search, function ($query, $search) {
             $query->whereHas('funcionario', function ($q) use ($search) {
                 $q->where('nome', 'like', '%' . $search . '%');
             });
         })->get();
-    
+
         // Retornar a view com os tickets filtrados
         return view('dashboard.rh.index', compact('tickets'));
     }
-    
-
 
     // Método para aprovar um pedido
     public function aprovarTicket($id)
@@ -73,48 +70,42 @@ class RHController extends Controller
     public function showTicket($id)
     {
         // Buscando o ticket pelo ID
-        $ticket = ControleDePontoTicket::with(['funcionario', 'horarioAntigo', 'horarioNovo', 'statusTicket'])
-            ->findOrFail($id);
+        $ticket = ControleDePontoTicket::with(['funcionario', 'horarioAntigo', 'horarioNovo', 'statusTicket'])->findOrFail($id);
 
         // Retornando a view com os detalhes do ticket
         return view('dashboard.rh.analizar_solicitacoes', compact('ticket')); // Mantenha ou altere o nome da view conforme necessário
     }
 
+    public function pesquisarAlunos(Request $request)
+    {
+        $request->validate([
+            'search' => 'nullable|string|max:255', // Garante que a pesquisa seja uma string válida
+        ]);
 
-public function pesquisarAlunos(Request $request)
-{
-    $request->validate([
-        'search' => 'nullable|string|max:255', // Garante que a pesquisa seja uma string válida
-    ]);
+        $query = $request->input('search');
 
-    $query = $request->input('search');
+        if ($query) {
+            $alunosFiltrados = Aluno::where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('nome', 'LIKE', "%{$query}%")->orWhere('cpf_aluno', 'LIKE', "%{$query}%");
+            })->get();
 
-    if ($query) {
-        $alunosFiltrados = Aluno::where(function($queryBuilder) use ($query) {
-            $queryBuilder->where('nome', 'LIKE', "%{$query}%")
-                         ->orWhere('cpf_aluno', 'LIKE', "%{$query}%");
-        })->get();
+            return response()->json($alunosFiltrados);
+        }
 
-        return response()->json($alunosFiltrados);
+        return response()->json([]);
     }
 
-    return response()->json([]);
-}
-
-public function pesquisaluno(Request $request)
+    public function pesquisaluno(Request $request)
     {
         // Obter o valor da busca
         $search = $request->input('search');
 
         // Consultar os alunos, aplicando filtro se houver busca
         $alunos = Aluno::when($search, function ($query, $search) {
-            $query->where('nome', 'like', '%' . $search . '%')
-            ->orWhere('cpf_aluno', 'LIKE', "%$search%") ;
+            $query->where('nome', 'like', '%' . $search . '%')->orWhere('cpf_aluno', 'LIKE', "%$search%");
         })->get();
-
 
         // Retornar a view com os alunos filtrados
         return view('dashboard.rh.apm', compact('alunos'));
     }
-
 }

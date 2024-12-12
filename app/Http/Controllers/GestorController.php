@@ -13,7 +13,6 @@ use App\Models\Curso;
 use App\Models\StatusAluno;
 use App\Models\ApmStatus;
 
-
 class GestorController extends Controller
 {
     // Método para exibir o dashboard do Gestor
@@ -48,7 +47,6 @@ class GestorController extends Controller
         return view('dashboard.gestor.pedidos_ticket', ['tickets' => $tickets]);
     }
 
-
     // Função que aprova um ticket
     public function aprovarTicket($id)
     {
@@ -78,40 +76,38 @@ class GestorController extends Controller
         return view('dashboard.gestor.detalhes_ticket', compact('ticket'));
     }
 
-
-
     // Função para mostrar a lista de alunos
     public function mostrarAlunos(Request $request)
     {
-    // Define a query inicial para incluir os relacionamentos necessários
-    $query = Aluno::with(['curso', 'statusAluno', 'apmStatus']);
+        // Define a query inicial para incluir os relacionamentos necessários
+        $query = Aluno::with(['curso', 'statusAluno', 'apmStatus']);
 
-    // // Verifica se há um parâmetro de busca
-    // if ($request->has('search')) {
-    //     $search = $request->input('search');
-    //     $query->where('nome', 'LIKE', "%$search%")
-    //           ->orWhere('cpf_aluno', 'LIKE', "%$search%")
-    //           ->orWhere('rg', 'LIKE', "%$search%")
-    //           ->orWhere('n_matricula', 'LIKE', "%$search%");
-    // }
+        // // Verifica se há um parâmetro de busca
+        // if ($request->has('search')) {
+        //     $search = $request->input('search');
+        //     $query->where('nome', 'LIKE', "%$search%")
+        //           ->orWhere('cpf_aluno', 'LIKE', "%$search%")
+        //           ->orWhere('rg', 'LIKE', "%$search%")
+        //           ->orWhere('n_matricula', 'LIKE', "%$search%");
+        // }
 
-    // Obtém os resultados com base na query final
-    $alunos = $query->get();
+        // Obtém os resultados com base na query final
+        $alunos = $query->get();
 
-    // Substitui o ID pelo objeto relacionado de curso, statusAluno, e apmStatus
-    foreach ($alunos as $aluno) {
-        $aluno->curso = Curso::find($aluno->curso);
-        $aluno->statusAluno = StatusAluno::find($aluno->status_aluno);
-        $aluno->apmStatus = ApmStatus::find($aluno->apm_status);
-    }
+        // Substitui o ID pelo objeto relacionado de curso, statusAluno, e apmStatus
+        foreach ($alunos as $aluno) {
+            $aluno->curso = Curso::find($aluno->curso);
+            $aluno->statusAluno = StatusAluno::find($aluno->status_aluno);
+            $aluno->apmStatus = ApmStatus::find($aluno->apm_status);
+        }
 
-    // Se a requisição espera JSON, retorna os alunos em formato JSON
-    if ($request->expectsJson()) {
-        return response()->json($alunos, 200);
-    }
+        // Se a requisição espera JSON, retorna os alunos em formato JSON
+        if ($request->expectsJson()) {
+            return response()->json($alunos, 200);
+        }
 
-    // Retorna a view 'dashboard.gestor.alunos' com os alunos carregados
-    return view('dashboard.gestor.alunos', compact('alunos'));
+        // Retorna a view 'dashboard.gestor.alunos' com os alunos carregados
+        return view('dashboard.gestor.alunos', compact('alunos'));
     }
 
     public function pesquisaAluno(Request $request)
@@ -121,20 +117,19 @@ class GestorController extends Controller
 
         // Consultar os alunos, aplicando filtro se houver busca
         $alunos = Aluno::when($search, function ($query, $search) {
-            $query->where('nome', 'like', '%' . $search . '%')
-            ->orWhere('cpf_aluno', 'LIKE', "%$search%")
-            ->orWhere('rg', 'LIKE', "%$search%")
-            ->orWhere('n_matricula', 'LIKE', "%$search%")
-            ->orWhere('email', 'LIKE', "%$search%");
-
+            $query
+                ->where('nome', 'like', '%' . $search . '%')
+                ->orWhere('cpf_aluno', 'LIKE', "%$search%")
+                ->orWhere('rg', 'LIKE', "%$search%")
+                ->orWhere('n_matricula', 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%");
         })->get();
 
-
-    foreach ($alunos as $aluno) {
-        $aluno->curso = Curso::find($aluno->curso);
-        $aluno->statusAluno = StatusAluno::find($aluno->status_aluno);
-        $aluno->apmStatus = ApmStatus::find($aluno->apm_status);
-    }
+        foreach ($alunos as $aluno) {
+            $aluno->curso = Curso::find($aluno->curso);
+            $aluno->statusAluno = StatusAluno::find($aluno->status_aluno);
+            $aluno->apmStatus = ApmStatus::find($aluno->apm_status);
+        }
 
         // Retornar a view com os alunos filtrados
         return view('dashboard.gestor.alunos', compact('alunos'));
@@ -214,5 +209,4 @@ class GestorController extends Controller
 
         return view('dashboard.gestor.detalhes_aluno', compact('aluno'));
     }
-
 }

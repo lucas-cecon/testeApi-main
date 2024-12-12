@@ -23,14 +23,14 @@ class BancoDeHorasSeeder extends Seeder
                 'hora_inicio' => '08:00:00',
                 'hora_fim' => '17:00:00',
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'updated_at' => Carbon::now(),
             ],
             [
                 'codigo' => 'BH002',
                 'hora_inicio' => '09:00:00',
                 'hora_fim' => '18:00:00',
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'updated_at' => Carbon::now(),
             ],
             [
                 'codigo' => 'BH003',
@@ -38,8 +38,7 @@ class BancoDeHorasSeeder extends Seeder
                 'hora_fim' => '19:00:00',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]
+            ],
         ]);
     }
 }
-

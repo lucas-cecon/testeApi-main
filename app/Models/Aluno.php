@@ -13,24 +13,14 @@ class Aluno extends Model
     protected $primaryKey = 'id_aluno'; // Define a chave primária como 'id_aluno'
 
     // Campos que podem ser preenchidos em massa
-    protected $fillable = [
-        'nome',
-        'cpf_aluno',
-        'rg',
-        'n_matricula',
-        'curso',
-        'status_aluno',
-        'email',
-        'apm_status',
-    ];
+    protected $fillable = ['nome', 'cpf_aluno', 'rg', 'n_matricula', 'curso', 'status_aluno', 'email', 'apm_status'];
 
     // Relacionamento com o modelo 'Curso'
-// App\Models\Aluno.php
-public function curso()
-{
-    return $this->belongsTo(Curso::class, 'curso', 'id'); // 'curso' é a coluna em alunos que armazena o ID do curso
-}
-
+    // App\Models\Aluno.php
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class, 'curso', 'id'); // 'curso' é a coluna em alunos que armazena o ID do curso
+    }
 
     // Relacionamento com o modelo 'StatusAluno' (um aluno tem um status)
     public function statusAluno()
@@ -67,5 +57,4 @@ public function curso()
     {
         return $this->hasMany(ControleDiploma::class, 'aluno_id'); // Ajuste o nome do campo conforme sua estrutura
     }
-
 }

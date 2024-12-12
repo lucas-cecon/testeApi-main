@@ -21,12 +21,11 @@ class DiplomaController extends Controller
         if ($request->filled('search')) {
             $searchTerm = $request->search;
             $query->where(function ($q) use ($searchTerm) {
-                $q->where('titulo', 'like', '%' . $searchTerm . '%')
-                    ->orWhereHas('controleDiplomas.aluno', function ($q) use ($searchTerm) {
-                        $q->where('nome', 'like', '%' . $searchTerm . '%')
-                          ->orWhere('cpf_aluno', 'like', '%' . $searchTerm . '%')
-                          ->orWhere('rg', 'like', '%' . $searchTerm . '%');
-                    });
+                $q->where('titulo', 'like', '%' . $searchTerm . '%')->orWhereHas('controleDiplomas.aluno', function ($q) use ($searchTerm) {
+                    $q->where('nome', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('cpf_aluno', 'like', '%' . $searchTerm . '%')
+                        ->orWhere('rg', 'like', '%' . $searchTerm . '%');
+                });
             });
         }
 
@@ -35,7 +34,7 @@ class DiplomaController extends Controller
 
         return view('dashboard.rh.diplomas', compact('diplomas'));
     }
-    
+
     /**
      * Exibe os detalhes de um diploma específico.
      */
@@ -44,7 +43,7 @@ class DiplomaController extends Controller
         $diploma = Diploma::findOrFail($id);
         $alunosRelacionados = ControleDiploma::where('diploma', $id)->with('aluno')->get();
         $todosAlunos = Aluno::all(); // Busca todos os alunos
-    
+
         return view('dashboard.rh.dados_diploma', compact('diploma', 'alunosRelacionados', 'todosAlunos'));
     }
 
@@ -91,11 +90,9 @@ class DiplomaController extends Controller
     {
         // Busca todos os cursos disponíveis
         $cursos = Curso::all();
-        
+
         return view('dashboard.rh.create', compact('cursos'));
     }
-    
-    
 
     /**
      * Armazena um novo diploma no banco de dados.
@@ -105,60 +102,54 @@ class DiplomaController extends Controller
         $validated = $request->validate([
             'titulo' => 'required|string|max:255',
             'lote_diploma' => 'required|string|max:255',
-            'quant_diploma' => 'required|integer|min:1'
+            'quant_diploma' => 'required|integer|min:1',
         ]);
-    
+
         // Adiciona o status ao array de dados validados
         $validated['status'] = 1; // Define o status como 1
-    
+
         // Cria o diploma com os dados validados
         Diploma::create($validated);
-    
+
         return redirect()->route('dashboard.rh.diplomas')->with('success', 'Diploma criado com sucesso!');
     }
 
-public function associarAluno(Request $request, $diplomaId)
-{
-    $request->validate([
-        'aluno_ids' => 'required|array', // Certifique-se de que é um array de IDs
-        'aluno_ids.*' => 'exists:tabela_alunos,id_aluno', // Validação de cada ID
-    ]);
+    public function associarAluno(Request $request, $diplomaId)
+    {
+        $request->validate([
+            'aluno_ids' => 'required|array', // Certifique-se de que é um array de IDs
+            'aluno_ids.*' => 'exists:tabela_alunos,id_aluno', // Validação de cada ID
+        ]);
 
-    // Associa os alunos ao diploma
-    foreach ($request->aluno_ids as $alunoId) {
-        ControleDiploma::create([
-            'aluno_id' => $alunoId,
-            'diploma_id' => $diplomaId,
+        // Associa os alunos ao diploma
+        foreach ($request->aluno_ids as $alunoId) {
+            ControleDiploma::create([
+                'aluno_id' => $alunoId,
+                'diploma_id' => $diplomaId,
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Alunos adicionados com sucesso!',
         ]);
     }
-
-    return response()->json([
-        'message' => 'Alunos adicionados com sucesso!',
-    ]);
-}
-
 
     public function atualizarStatus($id)
     {
         // Busca o diploma pelo ID
         $diploma = Diploma::findOrFail($id);
-        
+
         // Atualiza o status do diploma
         if ($diploma->status == 1) {
             $diploma->status = 2; // De 1 para 2
         } elseif ($diploma->status == 2) {
             $diploma->status = 3; // De 2 para 3
         }
-        
+
         // Salva as alterações
         $diploma->save();
 
         // Redireciona de volta com uma mensagem de sucesso
         return redirect()->back()->with('success', 'Status do diploma atualizado com sucesso!');
     }
-
-    
-
-    
-    
 }

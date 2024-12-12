@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Aluno</title>
 </head>
+
 <body>
     <h1>Editar Aluno: {{ $aluno->nome }}</h1>
     <form action="{{ route('dashboard.gestor.alunos.atualizar', $aluno->id_aluno) }}" method="POST">
         @csrf
         @method('PUT')
-        
+
         <label for="nome">Nome:</label>
         <input type="text" name="nome" value="{{ $aluno->nome }}" required>
         <br>
@@ -29,7 +31,7 @@
 
         <label for="curso">Curso:</label>
         <select name="curso" required>
-            @foreach($cursos as $curso)
+            @foreach ($cursos as $curso)
                 <option value="{{ $curso->id }}" {{ $curso->id == $aluno->curso ? 'selected' : '' }}>
                     {{ $curso->curso }}
                 </option>
@@ -39,7 +41,7 @@
 
         <label for="status_aluno">Status:</label>
         <select name="status_aluno" required>
-            @foreach($statusAlunos as $status)
+            @foreach ($statusAlunos as $status)
                 <option value="{{ $status->id }}" {{ $status->id == $aluno->status_aluno ? 'selected' : '' }}>
                     {{ $status->status }}
                 </option>
@@ -54,4 +56,5 @@
         <button type="submit">Atualizar Aluno</button>
     </form>
 </body>
+
 </html>

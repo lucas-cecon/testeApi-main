@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +8,26 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('../css/header.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/senai.svg') }}">
-     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-      .font-inter {
-          font-family: 'Inter', sans-serif;
-      }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
     </style>
 </head>
+
 <body class="font-inter bg-gray-100">
 
 
-   
-    <div class="flex flex-col items-center min-h-screen bg-gray-100 relative"> 
-       
+
+    <div class="flex flex-col items-center min-h-screen bg-gray-100 relative">
+
         @include('components.header', [
-    'sectionTitle' => 'Secretaria',
-    'pageTitle' => 'Dashboard',
-    'logoUrl' => route('dashboard.professor')
-])
+            'sectionTitle' => 'Secretaria',
+            'pageTitle' => 'Dashboard',
+            'logoUrl' => route('dashboard.professor'),
+        ])
 
         <!-- Title -->
         <h1 class="text-3x2 font-black mt-10 mb-10">Seja bem-vindo, {{ session('nome') }}!<br></h1>
@@ -35,14 +36,17 @@
 
             <div class="flex flex-col items-center">
                 <a href="{{ route('dashboard.professor.create_ticket') }}">
-                <div class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
-                    <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3" class="w-32 h-32 transition-opacity hover:opacity-80">
-                </div>
+                    <div
+                        class="w-32 h-32 flex items-center justify-center rounded-full shadow-lg bg-white transition transform hover:scale-110 hover:shadow-2xl">
+                        <img src="{{ asset('assets/img/icone_dashboard_3.svg') }}" alt="Icon 3"
+                            class="w-32 h-32 transition-opacity hover:opacity-80">
+                    </div>
                 </a>
                 <div class="w-16 h-1 bg-red-500 mt-5"></div>
-                
-                <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Pedido de<br>troca  de horário</p>
-                
+
+                <p class="mt-3 text-3x2 font-black text-center uppercase leading-snug h-16">Pedido de<br>troca de
+                    horário</p>
+
             </div>
 
         </div>
@@ -50,7 +54,7 @@
 
 
 
-         <h1 class="text-3x2 font-black mt-10 mb-5">Meus pedidos</h1>
+        <h1 class="text-3x2 font-black mt-10 mb-5">Meus pedidos</h1>
 
         <!-- Conteúdo da página (Tabela) -->
         <div class="container mx-auto py-6 w-11/12 ">
@@ -68,27 +72,32 @@
                             </tr>
                         </thead>
                         <tbody class="text-gray-700 text-sm">
-                            @foreach($tickets as $ticket)
-                            <tr class="border-b">
-                                <td class="border border-gray-300 px-4 py-2">{{ $ticket->id }}</td>
-                                <td class="border border-gray-300 px-4 py-2">{{ $ticket->gerente->nome }}</td>
-                                <td class="border border-gray-300 px-4 py-2">{{ $ticket->horarioAntigo->codigo }} ({{ $ticket->horarioAntigo->hora_inicio }} - {{ $ticket->horarioAntigo->hora_fim }})</td>
-                                <td class="border border-gray-300 px-4 py-2">{{ $ticket->horarioNovo->codigo }} ({{ $ticket->horarioNovo->hora_inicio }} - {{ $ticket->horarioNovo->hora_fim }})</td>
-                                <td class="border border-gray-300 px-4 py-2 
-                                    @if($ticket->statusTicket->status == 'Aberto') text-gray-600 
+                            @foreach ($tickets as $ticket)
+                                <tr class="border-b">
+                                    <td class="border border-gray-300 px-4 py-2">{{ $ticket->id }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $ticket->gerente->nome }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $ticket->horarioAntigo->codigo }}
+                                        ({{ $ticket->horarioAntigo->hora_inicio }} -
+                                        {{ $ticket->horarioAntigo->hora_fim }})</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $ticket->horarioNovo->codigo }}
+                                        ({{ $ticket->horarioNovo->hora_inicio }} -
+                                        {{ $ticket->horarioNovo->hora_fim }})</td>
+                                    <td
+                                        class="border border-gray-300 px-4 py-2 
+                                    @if ($ticket->statusTicket->status == 'Aberto') text-gray-600 
                                     @elseif($ticket->statusTicket->status == 'Em Observação') text-yellow-500 
-                                    @elseif($ticket->statusTicket->status == 'Recusado') text-red-500 
-                                    @endif">
-                                    {{ $ticket->statusTicket->status }}
-                                </td>
+                                    @elseif($ticket->statusTicket->status == 'Recusado') text-red-500 @endif">
+                                        {{ $ticket->statusTicket->status }}
+                                    </td>
 
-                                <td>
-                                <a href="{{ route('dashboard.professor.show_ticket', $ticket->id) }}" class="text-decoration-line: underline text-blue-500 px-4 py-2 ">Visualizar</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="{{ route('dashboard.professor.show_ticket', $ticket->id) }}"
+                                            class="text-decoration-line: underline text-blue-500 px-4 py-2 ">Visualizar</a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
-                    
+
                     </table>
                 </div>
             </div>
@@ -96,6 +105,7 @@
     </div>
 
 </body>
+
 </html>
 
 
@@ -149,7 +159,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($tickets as $ticket)
+            @foreach ($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->id }}</td>
                     <td>{{ $ticket->horarioAntigo->codigo }} ({{ $ticket->horarioAntigo->hora_inicio }} - {{ $ticket->horarioAntigo->hora_fim }})</td>

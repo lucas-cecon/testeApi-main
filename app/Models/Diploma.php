@@ -31,11 +31,9 @@ class Diploma extends Model
         return $this->hasMany(ControleDiploma::class, 'diploma', 'id');
     }
 
-        // Define o relacionamento com ControleDiploma
-        public function controleDiplomas()
-        {
-            return $this->hasMany(ControleDiploma::class, 'diploma', 'id'); // Verifique se o nome da chave estrangeira e da chave local estão corretos
-        }
+    // Define o relacionamento com ControleDiploma
+    public function controleDiplomas()
+    {
+        return $this->hasMany(ControleDiploma::class, 'diploma', 'id'); // Verifique se o nome da chave estrangeira e da chave local estão corretos
+    }
 }
-
-

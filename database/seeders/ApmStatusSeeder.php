@@ -12,12 +12,6 @@ class ApmStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('apm_status')->insert([
-            ['status' => 'Não Pago'],
-            ['status' => 'Parcela 1'],
-            ['status' => 'Parcela 2'],
-            ['status' => 'Parcela 3'],
-            ['status' => 'Parcela 4'],
-        ]);
+        DB::table('apm_status')->insert([['status' => 'Não Pago'], ['status' => 'Parcela 1'], ['status' => 'Parcela 2'], ['status' => 'Parcela 3'], ['status' => 'Parcela 4']]);
     }
 }
