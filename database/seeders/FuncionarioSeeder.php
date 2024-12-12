@@ -25,7 +25,7 @@ class FuncionarioSeeder extends Seeder
 
         DB::table('funcionarios')->insert([
             [
-                'nome' => 'RH 1',
+                'nome' => 'Guiliana Mafra',
                 'cpf' => '12345678901',
                 'nif' => '123456789',
                 'cargo' => 1,
@@ -35,7 +35,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'RH 2',
+                'nome' => 'Caroline Pimentel',
                 'cpf' => '22345678901',
                 'nif' => '123456789',
                 'cargo' => 1,
@@ -45,7 +45,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'RH 3',
+                'nome' => 'Rosemeyre Aparecida',
                 'cpf' => '12345678301',
                 'nif' => '123456789',
                 'cargo' => 1,
@@ -55,7 +55,27 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Professor 1',
+                'nome' => 'Robson Alves',
+                'cpf' => '20918293046',
+                'nif' => '783940263',
+                'cargo' => 1,
+                'horario' => 1,
+                'senha' => Hash::make('12345'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nome' => 'Marcela Americanas',
+                'cpf' => '02900901721',
+                'nif' => '039162839',
+                'cargo' => 1,
+                'horario' => 1,
+                'senha' => Hash::make('12345'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nome' => 'Ricardo Madera',
                 'cpf' => '09876543210',
                 'nif' => '987654321',
                 'cargo' => 2,
@@ -65,7 +85,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Professor 2',
+                'nome' => 'Tales de Mileto',
                 'cpf' => '09226543210',
                 'nif' => '987654321',
                 'cargo' => 2,
@@ -75,7 +95,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Professor 3',
+                'nome' => 'Vladimir Pitondo',
                 'cpf' => '09833543210',
                 'nif' => '987654321',
                 'cargo' => 2,
@@ -85,7 +105,17 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Gestor 1',
+                'nome' => 'Marcilha Amaral',
+                'cpf' => '83918291012',
+                'nif' => '009028329',
+                'cargo' => 2,
+                'horario' => 2,
+                'senha' => Hash::make('12345'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nome' => 'Max Robledine',
                 'cpf' => '10928102910',
                 'nif' => '987654921',
                 'cargo' => 3,
@@ -95,7 +125,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Gestor 2',
+                'nome' => 'Tomas Maquiavel',
                 'cpf' => '15928102910',
                 'nif' => '987654921',
                 'cargo' => 3,
@@ -105,7 +135,7 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Gestor 3',
+                'nome' => 'Levi daport aria',
                 'cpf' => '19928202910',
                 'nif' => '987654921',
                 'cargo' => 3,
@@ -115,7 +145,17 @@ class FuncionarioSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nome' => 'Master 1',
+                'nome' => 'Fabian Redelish',
+                'cpf' => '01911222232',
+                'nif' => '898989891',
+                'cargo' => 3,
+                'horario' => 2,
+                'senha' => Hash::make('12345'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nome' => 'Josef Tham Kench',
                 'cpf' => '90908198901',
                 'nif' => '987694321',
                 'cargo' => 4,
@@ -124,26 +164,6 @@ class FuncionarioSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            [
-                'nome' => 'Master 2',
-                'cpf' => '90908198922',
-                'nif' => '987694321',
-                'cargo' => 4,
-                'horario' => 2,
-                'senha' => Hash::make('12345'),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'nome' => 'Master 3',
-                'cpf' => '90903198931',
-                'nif' => '987694321',
-                'cargo' => 4,
-                'horario' => 2,
-                'senha' => Hash::make('12345'),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]
         ]);
     }
 }
