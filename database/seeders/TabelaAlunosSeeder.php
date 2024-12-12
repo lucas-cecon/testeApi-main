@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class TabelaAlunosSeeder extends Seeder
 {
@@ -45,6 +45,38 @@ class TabelaAlunosSeeder extends Seeder
                 'email' => 'carlos.souza@email.com',
                 'apm_status' => 1 // Não Pago
             ],
+            [
+                'nome' => 'Pamela Vettoreti',
+                'cpf_aluno' => '89381728192',
+                'rg' => 'RJ0909182',
+                'n_matricula' => 'MAT2023004',
+                'curso' => 2, // Administração
+                'status_aluno' => 3, // Reprovado
+                'email' => 'pamela.vettoreti@email.com',
+                'apm_status' => 2
+            ],
+            [
+                'nome' => 'Maria Eduarda Zeroum',
+                'cpf_aluno' => '78771627872',
+                'rg' => 'RJ9091723',
+                'n_matricula' => 'MAT2023005',
+                'curso' => 3, // Administração
+                'status_aluno' => 3, // Reprovado
+                'email' => 'maria.eduarda.zeroum@email.com',
+                'apm_status' => 3
+            ],
+            [
+                'nome' => 'João Pierre Davalo',
+                'cpf_aluno' => '09192039121',
+                'rg' => 'RJ9817211',
+                'n_matricula' => 'MAT2023006',
+                'curso' => 2, // Administração
+                'status_aluno' => 3, // Reprovado
+                'email' => 'maria.eduarda.zeroum@email.com',
+                'apm_status' => 3
+            ],
         ]);
+
+        
     }
 }
