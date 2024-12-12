@@ -13,11 +13,12 @@ class CursosSeeder extends Seeder
     public function run(): void
     {
         DB::table('cursos')->insert([
-            ['curso' => 'Desenvolvimento de Sistemas'],
-            ['curso' => 'Mecânica'],
-            ['curso' => 'Eletroeletrônica'],
-            ['curso' => 'Administração'],
-            ['curso' => 'Confeitaria'],
+            ['curso' => 'Turma562131'],
+            ['curso' => 'Turma010423'],
+            ['curso' => 'Turma010284'],
+            ['curso' => 'Turma012311'],
+            ['curso' => 'Turma011111'],
+            ['curso' => 'Turma010393'],
         ]);
     }
 }

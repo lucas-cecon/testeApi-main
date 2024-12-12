@@ -22,6 +22,30 @@ class ControleDiplomaSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'aluno_id' => 3, // Substitua pelo ID do aluno correspondente
+                'diploma' => 3, // Substitua pelo ID do diploma correspondente
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'aluno_id' => 4, // Substitua pelo ID do aluno correspondente
+                'diploma' => 4, // Substitua pelo ID do diploma correspondente
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'aluno_id' => 5, // Substitua pelo ID do aluno correspondente
+                'diploma' => 5, // Substitua pelo ID do diploma correspondente
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'aluno_id' => 2, // Substitua pelo ID do aluno correspondente
+                'diploma' => 5, // Substitua pelo ID do diploma correspondente
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
